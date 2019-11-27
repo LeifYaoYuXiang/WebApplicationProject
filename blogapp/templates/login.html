@@ -14,17 +14,24 @@
         <canvas id="login_canvas">
         </canvas>
         <div style="height: 100%;width: 100%;z-index: 9999">
+
             <div id="login_div">
                 <h1>Sign In</h1>
                 {% block content %}
                     <form action="" method="post" novalidate>
                         {{ form.hidden_tag() }}
+                        <p>{{ form.username.label }}</p>
+                        <P>{{ form.username(size=32) }}</P>
+
+                        <p>{{ form.password.label }}</p>
+                        <p>{{ form.password(size=32) }}</p>
+
+                        <p>{{ form.remember_me.label }}{{ form.remember_me}}</p>
+
+                        <P>{{ form.submit }}</P>
                         <p>
-                            {{ form.username.label }}
+                            <a href="{{url_for("signup")}}">I do not have one account yet, I want to register one</a>
                         </p>
-                        <P>
-                            {{ form.username(size=32) }}
-                        </P>
                     </form>
                 {% endblock %}
             </div>
