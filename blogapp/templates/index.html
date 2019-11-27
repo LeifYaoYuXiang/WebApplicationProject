@@ -1,10 +1,118 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<link rel="stylesheet" href="{{ url_for('static',filename="css/index.css") }}">
 
-</body>
-</html>
+{% macro blog_list_item(title="",basicInformation="",time="",readingTimes="",comments="") %}
+    <div class="blog_item">
+        <div class="blog_name">
+            {{ title }}
+        </div>
+        <div class="blog_description">
+            {{ basicInformation }}
+        </div>
+        <div class="blog_information">
+            <table style="width: 100%">
+                <tr >
+                    <td class="blog_date">{{ time }}</td>
+                    <td class="blog_reading">Reading Times:{{ readingTimes }}</td>
+                    <td class="blog_comment">Comments: {{ comments }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+{% endmacro %}
+
+{% extends "base.html" %}
+{% block mainContent %}
+    <aside class="vertical_list">
+            <div>
+                <div style="width: 100%">
+                    <img id="self_image" src="{{ url_for('static',filename='assets/leif.jpg') }}">
+                    <div id="name">Leif Yao</div>
+                </div>
+                <table id="aside_table_Data_Display">
+                    <tr>
+                        <th class="aside_data_aspect">
+                            Original
+                        </th>
+                        <th class="aside_data_aspect">
+                            Fans
+                        </th>
+                        <th class="aside_data_aspect">
+                            Comments
+                        </th>
+                    </tr>
+                    <tr>
+                        <td class="aside_data">
+                            100
+                        </td>
+                        <td class="aside_data">
+                            100
+                        </td>
+                        <td class="aside_data">
+                            100
+                        </td>
+                    </tr>
+                </table>
+                <div style="width: 100%">
+                    <div id="classification-title">
+                        Classification
+                    </div>
+                    <table id="classification-table" style="width: 100%">
+                        <tr>
+                            <td class="classification_item">
+                                Java
+                            </td>
+                            <td class="classification_number">
+                                10
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="classification_item">
+                                Java
+                            </td>
+                            <td class="classification_number">
+                                10
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="classification_item">
+                                Java
+                            </td>
+                            <td class="classification_number">
+                                10
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div style="width: 100%">
+                    <div id="rankings_title">
+                        Reading Rankings
+                    </div>
+                    <ul style="width: 100%">
+                        <li class="rankings_list_item">
+                            <span class="ranking_name">Hello World</span>
+                        </li>
+                        <li class="rankings_list_item">
+                            <span class="ranking_name">Hello World</span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </aside>
+
+    <div id="main_content" >
+        <div  style="width: 100%" id="searchBlog">
+            <input id="searchQuery" type="text" >
+            <button onclick="searchBlog()">Search</button>
+        </div>
+        <div id="blog_list">
+            <div>
+                {{ blog_list_item("ListView","Hello","2019-10-21",100,2) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+

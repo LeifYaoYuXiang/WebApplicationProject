@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename="css/horizontalDirection.css") }}">
+</head>
+<body>
+    <div class="horizon_display_list">
+        <div class="horizon_display_list_item">
+            Leif
+        </div>
+        <div class="horizon_display_list_item">
+            <a href="{{ url_for("index") }}">
+                <img src="{{ url_for("static",filename="assets/blog.png") }}" class="display_list_icon">Blog
+            </a>
+
+        </div>
+        <div class="horizon_display_list_item">
+            <a href="{{ url_for("resources") }}">
+                <img src="{{ url_for("static",filename="assets/resource.png") }}" class="display_list_icon">Resources
+            </a>
+        </div>
+        <div class="horizon_display_list_item">
+            <a href="{{ url_for("album") }}">
+                <img src="{{ url_for("static",filename="assets/album.png") }}" class="display_list_icon">Daily Life
+            </a>
+        </div>
+        <div class="horizon_display_list_item">
+            <a href="{{ url_for("contact") }}">
+                <img src="{{ url_for("static",filename="assets/contact.png") }}" class="display_list_icon"> Contact
+            </a>
+        </div>
+        <div id="horizon_display_list_login" class="horizon_display_list_item">
+            <a href="{{ url_for("login") }}">
+               <img src="{{ url_for("static",filename="assets/login.png") }}" class="display_list_icon"> Login
+            </a>
+        </div>
+    </div>
+    {% block mainContent%}
+
+    {% endblock %}
+</body>
+</html>

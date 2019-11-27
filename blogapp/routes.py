@@ -55,3 +55,23 @@ def signup():
         password_hash=generate_password_hash(form.password.data)
 
     return render_template('sign_up.html',form=form)
+
+
+@app.route('/contact',methods=["GET","POST"])
+def contact():
+    return render_template('contact.html')
+
+
+@app.route('/album',methods=["GET","POST"])
+def album():
+    return render_template('album.html')
+
+
+@app.route('/resources',methods=["GET","POST"])
+def resources():
+    return render_template('resources.html')
+
+
+# @app.route('/contact',methods=["GET","POST"])
+# def contact():
+#     return render_template('contact.html')

@@ -1,0 +1,105 @@
+.vertical_list{
+    position: absolute;
+    width: 20%;
+    left: 5%;
+    height: 90%;
+}
+
+.blog_item{
+    height: 200px;
+}
+
+.blog_name{
+    text-align: left;
+    font-size: x-large;
+    font-family: Serif;
+    font-weight: bold;
+}
+
+.blog_description{
+    text-align: left;
+    font-size: medium;
+    font-family: "Bell MT";
+}
+
+.blog_information{
+    font-weight: bold;
+}
+
+.classification_item{
+    text-align: left;
+    font-size: large;
+    font-family: Consolas;
+}
+
+
+.classification_number{
+    text-align: right;
+    font-size: large;
+    font-family: "Poor Richard";
+}
+
+.rankings_list_item{
+    width: 100%;
+}
+
+.ranking_name{
+    display: inline-block;
+    width: 40%;
+    position: absolute;
+    left: 10%;
+    height: 50px;
+    padding-bottom: 20px;
+    font-family: Ebrima;
+    font-size: large;
+    vertical-align: middle;
+}
+
+#searchBlog{
+    font-size: large;
+    text-align: right;
+}
+
+#main_content{
+    position: absolute;
+    width: 70%;
+    right: 5%;
+}
+
+#blog_list{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#self_image{
+    width: 50%;
+    text-align: center;
+    border-radius: 100px;
+}
+
+#name{
+    font-size: xx-large;
+    font-family: "Sitka Heading";
+}
+
+#aside_table_Data_Display{
+    width: 90%;
+    height: 100px;
+    text-align: center;
+    vertical-align: middle;
+    color: gray;
+    border-collapse: collapse;
+}
+
+#classification-title{
+    text-align: left;
+    font-size: x-large;
+    font-family: "Lucida Calligraphy"
+}
+
+#rankings_title{
+    margin-top: 10px;
+    text-align: left;
+    font-size: x-large;
+    font-family: "Lucida Calligraphy";
+}

@@ -1,0 +1,90 @@
+<link rel="stylesheet" href="{{ url_for('static',filename="css/contact.css") }}">
+
+{% extends "base.html" %}
+
+{% block mainContent %}
+    <aside class="contact_aside">
+        <img id="self_image" src="{{ url_for('static',filename='assets/leif.jpg') }}">
+        <div id="name_signature">
+            Leif
+        </div>
+        <div id="name_chinese">
+            Yao Yuxiang
+            <div id="simple_info">
+                One Stage3 Student in BDIC
+            </div>
+        </div>
+        <table id="aside_table_contact_info">
+            <a href="mailto:yaoyuxiangyyx2009@126.com">
+                <tr>
+                    <td>
+                        <a class="aside_icon_href" href="mailto:yaoyuxiangyyx2009@126.com">
+                            <div class="item_aside_table_contact_info">
+                                <img id="image_mailto" class="aside_icon" src="../assets/mail.png">Mail
+                            </div>
+                        </a>
+                    </td>
+                </tr>
+            </a>
+            <tr>
+                <td>
+                    <a class="aside_icon_href" href="https://github.com/LeifYaoYuXiang">
+                        <div class="item_aside_table_contact_info">
+                            <img id="image_github" class="aside_icon" src="../assets/github.png">Github
+                        </div>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </aside>
+    <div id="main_information_right_part">
+        <table id="contact_table" style="border-spacing: 20px">
+            <col class="table_col_first" align="left" />
+            <col class="table_col_second" align="right" />
+            <tr>
+                <td>
+                    email
+                </td>
+                <td>
+                    <a href="mailto:yaoyuxiangyyx2009@126.com">
+                        yaoyuxiangyyx2009@126.com
+                    </a>
+                    <br>
+                    <a href="mailto:yaoyuxiangyyx@gmail.com">
+                        yaoyuxiangyyx@gmail.com
+                    </a>
+
+                </td>
+            </tr>
+            <tr>
+                <td>
+                   phone
+                </td>
+                <td>
+                    (086) 187 0159 7327
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Address
+                </td>
+                <td>
+                    Beijing Chaoyang District Pingleyuan 100 <br>
+                    Beijing University of Technology <br>
+                    (See here in
+                    <a href="https://www.google.com/maps/place/北京工业大学/@39.871434,116.4785917,17.7z/data=!4m5!3m4!1s0x35f1ad88130ee509:0x3c39da0827e646e8!8m2!3d39.871611!4d116.479529">
+                        Google Map
+                    </a>
+                    )
+                </td>
+            </tr>
+            <tfoot>
+                <td colspan="2">
+                    &copy; 2019-Leif
+                </td>
+            </tfoot>
+        </table>
+
+
+    </div>
+{% endblock %}

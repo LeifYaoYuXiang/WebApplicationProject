@@ -3,12 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-
     <link rel="stylesheet" href="{{ url_for('static',filename='css/login.css') }}">
-
-
 </head>
-
 <body>
     <div style="position: absolute;height: 100%;width: 100%" >
         <canvas id="login_canvas">
@@ -38,9 +34,6 @@
         </div>
 
     </div>
-
-
-
 
     {#注意：关于绘制canvas的动画一定在body的canvas下面，否则无法找到canvas，从而导致无法绘制#}
     <script src="{{ url_for('static',filename='js/login.js') }}"></script>

@@ -1,0 +1,93 @@
+.contact_aside{
+    position: absolute;
+    left: 15%;
+    width: 20%;
+    font-size: 30px;
+}
+
+#self_image{
+    width: 240px;
+    height: 240px;
+    text-align: center;
+    border-radius: 100px;
+}
+
+.aside_icon{
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+}
+
+#aside_table_contact_info{
+    text-align: center;
+    margin-top: 70px;
+}
+
+.item_aside_table_contact_info{
+    width: 270px;
+    margin-top: 20px;
+    text-align: center;
+
+}
+
+a{
+    text-decoration: none;
+}
+
+a:hover{
+    color: black;
+}
+
+a:link{
+    color: black;
+}
+
+a:visited{
+    color: black;
+}
+
+
+#name_signature{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 50px;
+    font-family: Serif;
+    font-weight: bold;
+}
+
+#name_chinese{
+    font-family: "Ink Free";
+}
+
+#simple_info{
+    font-family: "Agency FB";
+    font-style: italic;
+    font-size: 30px;
+}
+
+#main_information_right_part{
+    position: absolute;
+    right: 10%;
+    width: 50%;
+    height: 100%;
+    text-align: center;
+
+}
+
+
+#contact_table{
+    margin: 0 auto;
+    vertical-align: middle;
+    font-size: 26px;
+    font-family: 'PT Serif',serif;
+
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+
+
+}
+
+.table_col_first{
+    font-weight: bold;
+}
