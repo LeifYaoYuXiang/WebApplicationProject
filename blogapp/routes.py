@@ -72,6 +72,11 @@ def resources():
     return render_template('resources.html')
 
 
-# @app.route('/contact',methods=["GET","POST"])
-# def contact():
-#     return render_template('contact.html')
+@app.route('/store',methods=['GET','POST'])
+def store():
+    return render_template('store.html')
+
+
+@app.route('/game',methods=['GET','POST'])
+def game():
+    return render_template('game.html')

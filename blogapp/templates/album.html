@@ -1,4 +1,16 @@
+<link rel="stylesheet" href="{{ url_for('static',filename="css/album.css") }}">
 {% extends "base.html" %}
 {% block mainContent %}
-
+    <div id="album_wall">
+        <ul class="polaroids">
+			<li><a href="#" title="Daily Life"><img src="{{ url_for('static',filename='assets/painting_wall/life.jpg') }}" alt="Daily Life"></a></li>
+			<li><a href="#" title="Movie"><img src="{{ url_for('static',filename='assets/painting_wall/movie.jpg') }}" alt="Movie"></a></li>
+			<li><a href="#" title="ACG"><img src="{{ url_for('static',filename='assets/painting_wall/acg.jpeg') }}" alt="ACG"></a></li>
+			<li><a href="#" title="Painting"><img src="{{ url_for('static',filename='assets/painting_wall/painting.jpg') }}" alt="Painting"></a></li>
+			<li><a href="#" title="Places of Interests"><img src="{{ url_for('static',filename='assets/painting_wall/places.jpg') }}" alt="Places of Interests"></a></li>
+			<li><a href="#" title="Wall Paper"><img src="{{ url_for('static',filename='assets/painting_wall/wallpaper.jpg') }}" alt="Wallpaper"></a></li>
+		</ul>
+    </div>
 {% endblock %}
+
+<script src="{{ url_for('static',filename="js/album.js") }}"></script>

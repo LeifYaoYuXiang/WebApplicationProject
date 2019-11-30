@@ -1,4 +1,80 @@
 {% extends "base.html" %}
-{% block mainContent %}
+{% macro resource_item(name,type,basic_info,size,download_times) %}
+    <div class="resources_item">
+        <table style="margin:0 auto">
+            <tr>
+                <td rowspan="3">
+                     {% if  type== "APK" %}
+                        <img src="{{ url_for('static',filename="assets/apk.png") }}" style="width: 80px;height: 80px">
+                     {% elif type=="JAR" %}
+                        <img src="{{ url_for('static',filename="assets/jar.png") }}" style="width: 80px;height: 80px">
+                     {% elif type=="DOC" %}
+                        <img src="{{ url_for('static',filename="assets/doc.png") }}" style="width: 80px;height: 80px">
+                     {% elif type=="EXCEL" %}
+                        <img src="{{ url_for('static',filename="assets/excel.png") }}" style="width: 80px;height: 80px">
+                     {% elif type=="PPT" %}
+                        <img src="{{ url_for('static',filename="assets/ppt.png") }}" style="width: 80px;height: 80px">
+                     {% elif type=="RAR" %}
+                        <img src="{{ url_for('static',filename="assets/rar.png") }}" style="width: 80px;height: 80px">
+                     {% elif type=="PYTHON" %}
+                        <img src="{{ url_for('static',filename="assets/python.png") }}" style="width: 80px;height: 80px">
+                     {% elif type=="ZIP" %}
+                        <img src="{{ url_for('static',filename="assets/zip.png") }}" style="width: 80px;height: 80px">
+                    {% endif %}
+                </td>
+                <td colspan="2">{{ name }}</td>
+            </tr>
+            <tr>
+                <td colspan="2">{{ basic_info }}</td>
+            </tr>
+            <tr>
+                <td>size:{{ size }}</td>
+                <td>Download Times:{{ download_times }}</td>
+            </tr>
+        </table>
+    </div>
 
+    {% if type == 'RAR' %}
+    {% endif %}
+{% endmacro %}
+{% block mainContent %}
+    <div>
+        <table style="margin: 0 auto">
+            <tr>
+                <td> Field </td>
+                <td>
+                    Java
+                    Android
+                    OpenGL
+                    C/C++
+                    Flask
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    Type
+                </td>
+                <td>
+                    Zip
+                    Rar
+                    Doc
+                    Ppt
+                    Excel
+                    Apk
+                    Jar
+                    Python
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <form>
+                        <input type="search">
+                    </form>
+                </td>
+            </tr>
+        </table>
+        <div>
+            {{ resource_item("Hello","APK","World","30MB",10) }}
+        </div>
+    </div>
 {% endblock %}
