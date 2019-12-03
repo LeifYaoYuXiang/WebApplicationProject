@@ -1,3 +1,6 @@
+<link rel="stylesheet" href="{{ url_for('static',filename='css/resources.css') }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/basic.css') }}">
+
 {% extends "base.html" %}
 {% macro resource_item(name,type,basic_info,size,download_times) %}
     <div class="resources_item">
@@ -33,48 +36,41 @@
             </tr>
         </table>
     </div>
-
-    {% if type == 'RAR' %}
-    {% endif %}
 {% endmacro %}
+
+
+
 {% block mainContent %}
+    <div class="cation-content" style="border: 1px black dotted">
+            <div class="cation-middle">
+                <dl class="cation-list">
+                    <dt>Field</dt>
+                    <dd>
+                        <a href="#" rel="" name="mode" class="all on">All</a>
+                        <a href="#" rel="" name="mode" class="default">Java</a>
+                        <a href="#" rel="" name="mode" class="default">C/C++</a>
+                        <a href="#" rel="" name="mode" class="default">OpenGL</a>
+                        <a href="#" rel="" name="mode" class="default">Flask</a>
+                        <a href="#" rel="" name="mode" class="default">Android</a>
+                    </dd>
+                </dl>
+                <dl class="cation-list">
+                    <dt>Type</dt>
+                    <dd>
+                        <a href="#" rel="" name="theme" class="all on">All</a>
+                        <a href="#" rel="" name="theme" class="default">JAR</a>
+                        <a href="#" rel="" name="theme" class="default">DOC</a>
+                        <a href="#" rel="" name="theme" class="default">PPT</a>
+                        <a href="#" rel="" name="theme" class="default">EXCEL</a>
+                        <a href="#" rel="" name="theme" class="default">RAR</a>
+                        <a href="#" rel="" name="theme" class="default">ZIP</a>
+                        <a href="#" rel="" name="theme" class="default">APK</a>
+                        <a href="#" rel="" name="theme" class="default">PYTHON</a>
+                    </dd>
+                </dl>
+            </div>
+        </div>
     <div>
-        <table style="margin: 0 auto">
-            <tr>
-                <td> Field </td>
-                <td>
-                    Java
-                    Android
-                    OpenGL
-                    C/C++
-                    Flask
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    Type
-                </td>
-                <td>
-                    Zip
-                    Rar
-                    Doc
-                    Ppt
-                    Excel
-                    Apk
-                    Jar
-                    Python
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <form>
-                        <input type="search">
-                    </form>
-                </td>
-            </tr>
-        </table>
-        <div>
             {{ resource_item("Hello","APK","World","30MB",10) }}
         </div>
-    </div>
 {% endblock %}

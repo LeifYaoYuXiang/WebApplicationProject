@@ -1,10 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<link rel="stylesheet" href="{{ url_for('static',filename="css/game.css") }}">
+{% macro hole() %}
 
-</body>
-</html>
+    <img src="{{ url_for('static',filename="assets/game/hole.png") }}" alt="">
+{% endmacro %}
+{% macro boom() %}
+    <img src="{{ url_for('static',filename="assets/game/boom.png") }}" alt="">
+{% endmacro %}
+
+{% macro mouse() %}
+    <img src="{{ url_for('static',filename="assets/game/mouse.png") }}" alt="">
+{% endmacro %}
+
+
+
+{% block mainContent %}
+    <div>Score：<span class="score"></span></div>
+	<div class="holes">
+		<div class="hole">{{ boom() }}{{ hole() }}{{ mouse() }}</div>
+        <div class="hole">{{ boom() }}{{ hole() }}{{ mouse() }}</div>
+        <div class="hole">{{ boom() }}{{ hole() }}{{ mouse() }}</div>
+        <div class="hole">{{ boom() }}{{ hole() }}{{ mouse() }}</div>
+        <div class="hole">{{ boom() }}{{ hole() }}{{ mouse() }}</div>
+        <div class="hole">{{ boom() }}{{ hole() }}{{ mouse() }}</div>
+        <div class="hole">{{ boom() }}{{ hole() }}{{ mouse() }}</div>
+        <div class="hole">{{ boom() }}{{ hole() }}{{ mouse() }}</div>
+        <div class="hole">{{ boom() }}{{ hole() }}{{ mouse() }}</div>
+    </div>
+{% endblock %}
+
+<script src="{{ url_for('static',filename='js/game.js') }}"></script>

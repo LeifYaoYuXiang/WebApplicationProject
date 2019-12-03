@@ -1,6 +1,4 @@
 <link rel="stylesheet" href="{{ url_for('static',filename="css/index.css") }}">
-<link rel="stylesheet" href="{{ url_for('static',filename='css/pagination.css') }}">
-<script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
 
 {% macro blog_list_item(title="",basicInformation="",time="",readingTimes="",comments="") %}
     <div class="blog_item">
@@ -110,15 +108,11 @@
             <div>
                 {{ blog_list_item("ListView","Hello","2019-10-21",100,2) }}
             </div>
-             <div id="pagination" name="pagination">
-                 hello
-             </div>
         </div>
 
     </div>
 {% endblock %}
 
-<script src={{ url_for('static',filename='js/pagination.js') }}></script>
 
 
 

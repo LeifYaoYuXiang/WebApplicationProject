@@ -1,0 +1,15 @@
+<link rel="stylesheet" href="{{ url_for('static',filename='css/pictureDisplay.css') }}">
+{% extends "base.html" %}
+
+{% macro display_item(image_src,id)%}
+    <input type="radio" name="slide_switch" id={{id}} />
+    <label for={{id}}>
+        <img src={{image_src}} width="100" />
+    </label>
+    <img src={{image_src}} />
+{% endmacro %}
+
+{% block mainContent %}
+    <div class="slider">
+    </div>
+{% endblock %}

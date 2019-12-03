@@ -2,6 +2,7 @@ let canvas=document.getElementById("background_canvas");
 let ctx=canvas.getContext('2d');
 resize();
 window.onresize=resize;
+
 function resize() {
     canvas.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
     canvas.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
