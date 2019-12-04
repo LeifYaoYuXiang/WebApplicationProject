@@ -4,7 +4,7 @@
 # 首先是从已有的模块中实现需要模块的引入
 
 #
-from flask import render_template, flash, redirect, url_for, session
+from flask import render_template, flash, redirect, url_for, session, send_from_directory, request
 from werkzeug.security import generate_password_hash, check_password_hash
 #
 from blogapp import app,db
@@ -19,6 +19,9 @@ import os
 @app.route('/')
 @app.route('/index')
 def index():
+    path = os.path.split(os.path.realpath(__file__))[0]+os.sep+'static'+os.sep+'assets'+os.sep+'album_acg'
+    print(path)
+    print(os.listdir(path))
     return render_template('index.html')
 
 
@@ -75,3 +78,75 @@ def resources():
 @app.route('/game',methods=['GET','POST'])
 def game():
     return render_template('game.html')
+
+
+@app.route('/pictureDisplay/<type>', methods=['GET','POST'])
+def pictureDisplay(type):
+    print(type)
+    path = '';
+    temp_pics = [];
+    pics = [];
+    if type == "ACG":
+        path = os.path.split(os.path.realpath(__file__))[0]+os.sep+'static'+os.sep+'assets'+os.sep+'album_acg'
+        temp_pics = os.listdir(path)
+        for pic in temp_pics:
+            pic = 'assets/album_acg/'+pic
+            print(pic)
+            pics.append(pic)
+        print(pics)
+    elif type == "LIFE":
+        path = os.path.split(os.path.realpath(__file__))[0] +os.sep+'static'+os.sep+'assets'+os.sep+'album_life'
+        temp_pics = os.listdir(path)
+        for pic in temp_pics:
+            pic = 'assets/album_life/' + pic
+            print(pic)
+            pics.append(pic)
+        print(pics)
+    elif type == "PAINTING":
+        path = os.path.split(os.path.realpath(__file__))[0]+os.sep+'static'+os.sep+'assets'+os.sep+'album_painting'
+        temp_pics = os.listdir(path)
+        for pic in temp_pics:
+            pic = 'assets/album_painting/' + pic
+            print(pic)
+            pics.append(pic)
+        print(pics)
+    elif type == "MOVIE":
+        path = os.path.split(os.path.realpath(__file__))[0] +os.sep+'static'+os.sep+'assets'+os.sep+'album_movie'
+        temp_pics = os.listdir(path)
+        for pic in temp_pics:
+            pic = 'assets/album_movie/' + pic
+            print(pic)
+            pics.append(pic)
+        print(pics)
+    elif type == 'PLACES':
+        path = os.path.split(os.path.realpath(__file__))[0]+os.sep+'static'+os.sep+'assets'+os.sep+'album_places'
+        temp_pics = os.listdir(path)
+        for pic in temp_pics:
+            pic = 'assets/album_places/' + pic
+            print(pic)
+            pics.append(pic)
+        print(pics)
+    elif type == "WALLPAPER":
+        path = os.path.split(os.path.realpath(__file__))[0]+os.sep+'static'+os.sep+'assets'+os.sep+'album_wallpaper'
+        temp_pics = os.listdir(path)
+        for pic in temp_pics:
+            pic = 'assets/album_wallpaper/' + pic
+            print(pic)
+            pics.append(pic)
+        print(pics)
+    return render_template('pictureDisplay.html',pics=pics)
+
+
+@app.route('/download/<string:filename>', methods=['GET'])
+def download(filename):
+    if request.method == "GET":
+        path = os.path.split(os.path.realpath(__file__))[0] +os.sep+'static'+os.sep+'download'+os.sep+filename
+        if os.path.isfile(path):
+            dir = os.path.split(os.path.realpath(__file__))[0] +os.sep+'static'+os.sep+'download'
+            return send_from_directory(dir, filename, as_attachment=True)
+        pass
+
+
+@app.route('/blogContent/<string:blog_name>',methods=['GET','POST'])
+def blogContent(blog_name):
+    return render_template('blogContent.html')

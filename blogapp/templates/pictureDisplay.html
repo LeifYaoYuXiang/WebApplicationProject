@@ -4,12 +4,15 @@
 {% macro display_item(image_src,id)%}
     <input type="radio" name="slide_switch" id={{id}} />
     <label for={{id}}>
-        <img src={{image_src}} width="100" />
+        <img src={{url_for('static',filename=image_src)}} width="100" />
     </label>
-    <img src={{image_src}} />
+    <img src={{url_for('static',filename=image_src)}} />
 {% endmacro %}
 
 {% block mainContent %}
     <div class="slider">
+    {% for pic in pics %}
+       {{ display_item(pic,loop.index) }}
+    {% endfor %}
     </div>
 {% endblock %}

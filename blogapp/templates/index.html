@@ -3,7 +3,9 @@
 {% macro blog_list_item(title="",basicInformation="",time="",readingTimes="",comments="") %}
     <div class="blog_item">
         <div class="blog_name">
-            {{ title }}
+            <a href="{{ url_for('blogContent',blog_name="helloworld") }}">
+                {{ title }}
+            </a>
         </div>
         <div class="blog_description">
             {{ basicInformation }}
@@ -58,28 +60,16 @@
                     </div>
                     <table id="classification-table" style="width: 100%">
                         <tr>
-                            <td class="classification_item">
-                                Java
-                            </td>
-                            <td class="classification_number">
-                                10
-                            </td>
+                            <td class="classification_item">Java</td>
+                            <td class="classification_number">10</td>
                         </tr>
                         <tr>
-                            <td class="classification_item">
-                                Java
-                            </td>
-                            <td class="classification_number">
-                                10
-                            </td>
+                            <td class="classification_item">Java</td>
+                            <td class="classification_number">10</td>
                         </tr>
                         <tr>
-                            <td class="classification_item">
-                                Java
-                            </td>
-                            <td class="classification_number">
-                                10
-                            </td>
+                            <td class="classification_item">Java</td>
+                            <td class="classification_number">10</td>
                         </tr>
                     </table>
                 </div>
@@ -99,18 +89,20 @@
                 </div>
             </div>
         </aside>
-    <div id="main_content" >
-        <div  style="width: 100%" id="searchBlog">
+    {% block blog_content %}
+        <div id="main_content" >
+            <div  style="width: 100%" id="searchBlog">
             <input id="searchQuery" type="text" >
             <button onclick="searchBlog()">Search</button>
         </div>
-        <div id="blog_list">
+            <div id="blog_list">
             <div>
                 {{ blog_list_item("ListView","Hello","2019-10-21",100,2) }}
             </div>
         </div>
+        </div>
+    {% endblock %}
 
-    </div>
 {% endblock %}
 
 

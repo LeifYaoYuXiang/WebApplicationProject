@@ -2,42 +2,63 @@
 <link rel="stylesheet" href="{{ url_for('static',filename='css/basic.css') }}">
 
 {% extends "base.html" %}
-{% macro resource_item(name,type,basic_info,size,download_times) %}
+{% macro resource_item(name,type,basic_info,size,download_times,file_name) %}
     <div class="resources_item">
         <table style="margin:0 auto">
             <tr>
                 <td rowspan="3">
                      {% if  type== "APK" %}
-                        <img src="{{ url_for('static',filename="assets/apk.png") }}" style="width: 80px;height: 80px">
+                        <img src="{{ url_for('static',filename="assets/resources_item/apk.png") }}" style="width: 80px;height: 80px">
                      {% elif type=="JAR" %}
-                        <img src="{{ url_for('static',filename="assets/jar.png") }}" style="width: 80px;height: 80px">
+                        <img src="{{ url_for('static',filename="assets/resources_item/jar.png") }}" style="width: 80px;height: 80px">
                      {% elif type=="DOC" %}
-                        <img src="{{ url_for('static',filename="assets/doc.png") }}" style="width: 80px;height: 80px">
+                        <img src="{{ url_for('static',filename="assets/resources_item/doc.png") }}" style="width: 80px;height: 80px">
                      {% elif type=="EXCEL" %}
-                        <img src="{{ url_for('static',filename="assets/excel.png") }}" style="width: 80px;height: 80px">
+                        <img src="{{ url_for('static',filename="assets/resources_item/excel.png") }}" style="width: 80px;height: 80px">
                      {% elif type=="PPT" %}
-                        <img src="{{ url_for('static',filename="assets/ppt.png") }}" style="width: 80px;height: 80px">
+                        <img src="{{ url_for('static',filename="assets/resources_item/ppt.png") }}" style="width: 80px;height: 80px">
                      {% elif type=="RAR" %}
-                        <img src="{{ url_for('static',filename="assets/rar.png") }}" style="width: 80px;height: 80px">
+                        <img src="{{ url_for('static',filename="assets/resources_item/rar.png") }}" style="width: 80px;height: 80px">
                      {% elif type=="PYTHON" %}
-                        <img src="{{ url_for('static',filename="assets/python.png") }}" style="width: 80px;height: 80px">
+                        <img src="{{ url_for('static',filename="assets/resources_item/python.png") }}" style="width: 80px;height: 80px">
                      {% elif type=="ZIP" %}
-                        <img src="{{ url_for('static',filename="assets/zip.png") }}" style="width: 80px;height: 80px">
+                        <img src="{{ url_for('static',filename="assets/resources_item/zip.png") }}" style="width: 80px;height: 80px">
                     {% endif %}
                 </td>
-                <td colspan="2">{{ name }}</td>
+                <td colspan="2">
+                    <a href="{{ url_for('download',filename=file_name) }}">{{ name }}</a>
+                </td>
             </tr>
             <tr>
                 <td colspan="2">{{ basic_info }}</td>
             </tr>
             <tr>
                 <td>size:{{ size }}</td>
-                <td>Download Times:{{ download_times }}</td>
+                <td>Download Times: {{ download_times }}</td>
             </tr>
         </table>
     </div>
 {% endmacro %}
 
+{% macro download_item(name,type,basic_info,size,download_times,file_name) %}
+    <div class="download_item" style="width: 100%; height:100px">
+        <div class="item_image_container">
+            <img src={{ url_for('static',filename=type) }} class="item_image">
+        </div>
+        <div class="item_information_container">
+            <div class="item_information_title">
+                <a href="{{ url_for('download',filename=file_name) }}"> {{ name }}</a>
+            </div>
+            <div class="item_information_description">
+                {{ basic_info }}
+            </div>
+            <div class="item_information_detail">
+                <span>Size: {{ size }}MB  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span>Download Times: {{ download_times }}</span>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
 
 
 {% block mainContent %}
@@ -70,7 +91,9 @@
                 </dl>
             </div>
         </div>
-    <div>
-            {{ resource_item("Hello","APK","World","30MB",10) }}
-        </div>
+    <div style="width: 1200px; margin: 0 auto; padding: 0">
+        {% block searchResources%}
+            {{ download_item("Hello","assets/resources_item/apk.png","World","30MB",10,"new.doc") }}
+        {% endblock %}
+    </div>
 {% endblock %}

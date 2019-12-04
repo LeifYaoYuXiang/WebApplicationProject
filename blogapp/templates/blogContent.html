@@ -1,0 +1,8 @@
+<link rel="stylesheet" href="{{ url_for('static',filename="css/blogContent.css") }}">
+
+{% extends 'index.html' %}
+
+{% block blog_content %}
+    {% set hellopassage='blogs/helloworld.html' %}
+    {% include hellopassage %}
+{% endblock %}

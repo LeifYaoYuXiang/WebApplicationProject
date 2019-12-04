@@ -1,12 +1,59 @@
-.resources_item{
-    width: 100%;
-    height: 40em;
-    border-width: 2px;
-    border-color: black;
-    text-align: center;
+.download_item{
+    position: relative;
+    background: #ffffff;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.item_image{
+    width: 100px;
+    height: 100px;
+    vertical-align: middle;
+}
+
+.item_image_container{
+    position: absolute;
+    width: 10%;
+    left: 5%;
+}
+
+.item_information_container{
+    position: absolute;
+    width: 70%;
+    right: 10%;
+}
+
+.item_information_title{
+   text-align: left;
+    font-weight: bold;
+    font-size: 26px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.item_information_title:hover{
     color: red;
 }
 
+.item_information_description{
+    text-align: left;
+    font-size: 15px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+
+.item_information_detail{
+    color: #959db1;
+    text-align: left;
+    font-size: 15px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    padding-bottom: 10px;
+}
 
 #main_content_div{
     width: 1200px;

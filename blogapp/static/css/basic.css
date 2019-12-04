@@ -46,3 +46,7 @@ a:link{
     height: 25px;
     vertical-align: middle;
 }
+
+li{
+    list-style: none;
+}
