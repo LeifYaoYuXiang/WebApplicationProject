@@ -6,7 +6,7 @@
 }
 
 .blog_item{
-    height: 200px;
+    padding: 10px;
 }
 
 .blog_name{
@@ -25,12 +25,20 @@
 .blog_information{
     font-weight: bold;
 }
+.blog_comment{
+    text-align: right;
+}
+
+.blog_reading{
+    text-align: center;
+}
 
 .classification_item{
     text-align: left;
     font-size: large;
     font-family: Consolas;
 }
+
 
 
 .classification_number{

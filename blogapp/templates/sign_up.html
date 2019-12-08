@@ -1,17 +1,33 @@
 {% extends 'base.html' %}
 
 {% block mainContent %}
+    {% for msg in get_flashed_messages() %}
+        <p>{{ msg }}</p>
+    {% endfor %}
     <form action="" method="post" novalidate>
         {{ form.hidden_tag() }}
         <p>{{ form.username.label }}</p>
         <P>{{ form.username(size=32) }}</P>
-
+        {% for error in form.username.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
         <p>{{ form.password.label }}</p>
         <p>{{ form.password(size=32) }}</p>
-
+        {% for error in form.password.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
         <p>{{ form.password_ensure.label }}</p>
         <p>{{ form.password_ensure(size=32) }}</p>
-
+        {% for error in form.password_ensure.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+        <p>{{ form.email.label }}</p>
+        <p>{{ form.email(size=32) }}</p>
+        {% for error in form.email.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+        <p>{{ form.accept_rules.label }}</p>
+        <p>{{ form.accept_rules }}</p>
         <P>{{ form.submit }}</P>
 
 

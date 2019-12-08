@@ -1,0 +1,27 @@
+textarea{
+    border:0;
+    border-radius:5px;
+    background-color:rgba(241,241,241,.98);
+    width: 800px;
+    height: 100px;
+    padding: 10px;
+    resize: none;
+}
+
+#submit{
+    color: #fff;
+    text-shadow: 0 -1px 0 rgba(0,0,0,0.12);
+    box-shadow: 0 2px 0 rgba(0,0,0,0.045);
+    border-radius: 200px;
+    background-color: #1B9AF7;
+    border-color: #1B9AF7;
+    font-weight: 300;
+    font-size: 16px;
+    font-family: "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+    text-decoration: none;
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    padding: 0 40px;
+    margin: 0;
+}

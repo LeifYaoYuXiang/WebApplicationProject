@@ -1,8 +1,26 @@
 <link rel="stylesheet" href="{{ url_for('static',filename="css/blogContent.css") }}">
 
-{% extends 'index.html' %}
+{% macro comments() %}
 
+{% endmacro %}
+
+{% extends 'index.html' %}
 {% block blog_content %}
-    {% set hellopassage='blogs/helloworld.html' %}
-    {% include hellopassage %}
+    {% include name %}
+    <hr/>
+    <ul>
+    {% for comment in comments_in_db %}
+        <dl>
+            <dt>{{ comment.username }}</dt>
+            <dd>{{ comment.information }}</dd>
+        </dl>
+    {% endfor %}
+    </ul>
+
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <p>{{ form.comment.label }}</p>
+        <P>{{ form.comment }}</P>
+        <P>{{ form.submit }}</P>
+    </form>
 {% endblock %}

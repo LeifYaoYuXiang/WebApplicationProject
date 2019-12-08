@@ -2,48 +2,35 @@
 <link rel="stylesheet" href="{{ url_for('static',filename='css/basic.css') }}">
 
 {% extends "base.html" %}
-{% macro resource_item(name,type,basic_info,size,download_times,file_name) %}
-    <div class="resources_item">
-        <table style="margin:0 auto">
-            <tr>
-                <td rowspan="3">
-                     {% if  type== "APK" %}
-                        <img src="{{ url_for('static',filename="assets/resources_item/apk.png") }}" style="width: 80px;height: 80px">
-                     {% elif type=="JAR" %}
-                        <img src="{{ url_for('static',filename="assets/resources_item/jar.png") }}" style="width: 80px;height: 80px">
-                     {% elif type=="DOC" %}
-                        <img src="{{ url_for('static',filename="assets/resources_item/doc.png") }}" style="width: 80px;height: 80px">
-                     {% elif type=="EXCEL" %}
-                        <img src="{{ url_for('static',filename="assets/resources_item/excel.png") }}" style="width: 80px;height: 80px">
-                     {% elif type=="PPT" %}
-                        <img src="{{ url_for('static',filename="assets/resources_item/ppt.png") }}" style="width: 80px;height: 80px">
-                     {% elif type=="RAR" %}
-                        <img src="{{ url_for('static',filename="assets/resources_item/rar.png") }}" style="width: 80px;height: 80px">
-                     {% elif type=="PYTHON" %}
-                        <img src="{{ url_for('static',filename="assets/resources_item/python.png") }}" style="width: 80px;height: 80px">
-                     {% elif type=="ZIP" %}
-                        <img src="{{ url_for('static',filename="assets/resources_item/zip.png") }}" style="width: 80px;height: 80px">
-                    {% endif %}
-                </td>
-                <td colspan="2">
-                    <a href="{{ url_for('download',filename=file_name) }}">{{ name }}</a>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">{{ basic_info }}</td>
-            </tr>
-            <tr>
-                <td>size:{{ size }}</td>
-                <td>Download Times: {{ download_times }}</td>
-            </tr>
-        </table>
-    </div>
-{% endmacro %}
 
 {% macro download_item(name,type,basic_info,size,download_times,file_name) %}
     <div class="download_item" style="width: 100%; height:100px">
         <div class="item_image_container">
-            <img src={{ url_for('static',filename=type) }} class="item_image">
+            {% if  type== "APK" %}
+                <img src="{{ url_for('static',filename="assets/resources_item/apk.png") }}"
+                     style="width: 80px;height: 80px">
+            {% elif type=="JAR" %}
+                <img src="{{ url_for('static',filename="assets/resources_item/jar.png") }}"
+                     style="width: 80px;height: 80px">
+            {% elif type=="DOC" %}
+                <img src="{{ url_for('static',filename="assets/resources_item/doc.png") }}"
+                     style="width: 80px;height: 80px">
+            {% elif type=="EXCEL" %}
+                <img src="{{ url_for('static',filename="assets/resources_item/excel.png") }}"
+                     style="width: 80px;height: 80px">
+            {% elif type=="PDF" %}
+                <img src="{{ url_for('static',filename="assets/resources_item/pdf.png") }}"
+                     style="width: 80px;height: 80px">
+            {% elif type=="PPT" %}
+                <img src="{{ url_for('static',filename="assets/resources_item/ppt.png") }}"
+                     style="width: 80px;height: 80px">
+            {% elif type=="PYTHON" %}
+                <img src="{{ url_for('static',filename="assets/resources_item/python.png") }}"
+                     style="width: 80px;height: 80px">
+            {% elif type=="ZIP" %}
+                <img src="{{ url_for('static',filename="assets/resources_item/zip.png") }}"
+                     style="width: 80px;height: 80px">
+            {% endif %}
         </div>
         <div class="item_information_container">
             <div class="item_information_title">
@@ -53,7 +40,7 @@
                 {{ basic_info }}
             </div>
             <div class="item_information_detail">
-                <span>Size: {{ size }}MB  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span>Size: {{ size }}KB  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
                 <span>Download Times: {{ download_times }}</span>
             </div>
         </div>
@@ -63,37 +50,38 @@
 
 {% block mainContent %}
     <div class="cation-content" style="border: 1px black dotted">
-            <div class="cation-middle">
-                <dl class="cation-list">
-                    <dt>Field</dt>
-                    <dd>
-                        <a href="#" rel="" name="mode" class="all on">All</a>
-                        <a href="#" rel="" name="mode" class="default">Java</a>
-                        <a href="#" rel="" name="mode" class="default">C/C++</a>
-                        <a href="#" rel="" name="mode" class="default">OpenGL</a>
-                        <a href="#" rel="" name="mode" class="default">Flask</a>
-                        <a href="#" rel="" name="mode" class="default">Android</a>
-                    </dd>
-                </dl>
-                <dl class="cation-list">
-                    <dt>Type</dt>
-                    <dd>
-                        <a href="#" rel="" name="theme" class="all on">All</a>
-                        <a href="#" rel="" name="theme" class="default">JAR</a>
-                        <a href="#" rel="" name="theme" class="default">DOC</a>
-                        <a href="#" rel="" name="theme" class="default">PPT</a>
-                        <a href="#" rel="" name="theme" class="default">EXCEL</a>
-                        <a href="#" rel="" name="theme" class="default">RAR</a>
-                        <a href="#" rel="" name="theme" class="default">ZIP</a>
-                        <a href="#" rel="" name="theme" class="default">APK</a>
-                        <a href="#" rel="" name="theme" class="default">PYTHON</a>
-                    </dd>
-                </dl>
-            </div>
+        <div class="cation-middle">
+            <dl class="cation-list">
+                <dt>Field</dt>
+                <dd>
+                    <a href="{{ url_for('resources') }}" rel="" name="mode" class="all on">All</a>
+                    <a href="{{ url_for('resources_search',keyword="JAVA") }}" rel="" name="mode" class="default">Java</a>
+                    <a href="{{ url_for('resources_search',keyword="C") }}" rel="" name="mode" class="default">C/C++</a>
+                    <a href="{{ url_for('resources_search',keyword="OPENGL") }}" rel="" name="mode" class="default">OpenGL</a>
+                    <a href="{{ url_for('resources_search',keyword="FLASK") }}" rel="" name="mode" class="default">Flask</a>
+                    <a href="{{ url_for('resources_search',keyword="ANDROID") }}" rel="" name="mode" class="default">Android</a>
+                    <a href="{{ url_for('resources_search',keyword="PYTHON") }}" rel="" name="theme" class="default">PYTHON</a>
+                </dd>
+            </dl>
+            <dl class="cation-list">
+                <dt>Type</dt>
+                <dd>
+                    <a href="{{ url_for('resources') }}" rel="" name="theme" class="all on">All</a>
+                    <a href="{{ url_for('resources_search',keyword="JAR") }}" rel="" name="theme" class="default">JAR</a>
+                    <a href="{{ url_for('resources_search',keyword="DOC") }}" rel="" name="theme" class="default">DOC</a>
+                    <a href="{{ url_for('resources_search',keyword="PPT") }}" rel="" name="theme" class="default">PPT</a>
+                    <a href="{{ url_for('resources_search',keyword="EXCEL") }}" rel="" name="theme" class="default">EXCEL</a>
+                    <a href="{{ url_for('resources_search',keyword="ZIP") }}" rel="" name="theme" class="default">ZIP</a>
+                    <a href="{{ url_for('resources_search',keyword="APK") }}" rel="" name="theme" class="default">APK</a>
+                </dd>
+            </dl>
         </div>
+    </div>
     <div style="width: 1200px; margin: 0 auto; padding: 0">
-        {% block searchResources%}
-            {{ download_item("Hello","assets/resources_item/apk.png","World","30MB",10,"new.doc") }}
+        {% block searchResources %}
+            {% for item in resources_in_db %}
+                {{ download_item(item.name,item.type,item.description,item.size,item.download,item.name) }}
+            {% endfor %}
         {% endblock %}
     </div>
 {% endblock %}

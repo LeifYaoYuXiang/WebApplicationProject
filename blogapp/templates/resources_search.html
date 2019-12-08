@@ -1,5 +1,8 @@
 {% extends 'resources.html' %}
 
 {% block searchResources %}
-
+    <div>You are searching {{ keyword }}</div>
+    {% for item in resources_in_db %}
+        {{ download_item(item.name,item.type,item.description,item.size,item.download,item.name) }}
+    {% endfor %}
 {% endblock %}

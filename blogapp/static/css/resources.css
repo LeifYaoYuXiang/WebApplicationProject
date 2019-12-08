@@ -32,7 +32,6 @@
 }
 
 .item_information_title:hover{
-    color: red;
 }
 
 .item_information_description{
@@ -124,8 +123,8 @@
     margin: 17px 0;
 }
 
-.cation-list dd a.on, .cation-list a:hover {
-    color: #fc8080;
+.cation-list a:hover {
+    color: #1B9AF7;
 }
 
 .cation-list dd a:last-child {

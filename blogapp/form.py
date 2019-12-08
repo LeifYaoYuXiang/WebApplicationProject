@@ -2,8 +2,8 @@
 # 在form.py中，我们定义了一系列即将用于web网页的表单，我们在此定义表单中包含的元素，以及对元素的相关检验
 
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
-from wtforms.validators import DataRequired
+from wtforms import StringField, PasswordField, BooleanField, SubmitField,TextAreaField
+from wtforms.validators import DataRequired,email
 
 
 # 该表单用于登陆界面
@@ -21,5 +21,11 @@ class SignUpForm(FlaskForm):
     username = StringField('Input Username', validators=[DataRequired()])
     password = PasswordField('Input Password', validators=[DataRequired()])
     password_ensure = PasswordField('Input your password again',validators=[DataRequired()])
+    email = StringField('Input Your Email',validators=[DataRequired(),email()])
     accept_rules = BooleanField('I accept the site rules',validators=[DataRequired()])
     submit = SubmitField('Register')
+
+
+class CommentForm(FlaskForm):
+    comment = TextAreaField("Please made your comments",validators=[DataRequired()])
+    submit = SubmitField('Comment')
