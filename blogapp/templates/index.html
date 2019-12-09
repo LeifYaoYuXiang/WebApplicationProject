@@ -1,5 +1,5 @@
-<link rel="stylesheet" href="{{ url_for('static',filename="css/index.css") }}">
-
+<link rel="stylesheet" href="{{ url_for('static',filename="css/basic.css") }}">
+<link rel="stylesheet" href="{{ url_for('static',filename='css/index.css') }}">
 {% macro blog_list_item(title="",basicInformation="",time="",readingTimes="",comments="") %}
     <div class="blog_item">
         <div class="blog_name">
@@ -52,13 +52,13 @@
                 </tr>
                 <tr>
                     <td class="aside_data">
-                        100
+                        {{original}}
                     </td>
                     <td class="aside_data">
-                        100
+                        {{fans}}
                     </td>
                     <td class="aside_data">
-                        100
+                        {{comments_total}}
                     </td>
                 </tr>
             </table>
@@ -66,23 +66,35 @@
                 <div id="classification-title">
                     Field
                 </div>
-                <table id="classification-table" style="width: 100%">
+                <table id="classification-table" style="width: 90%">
                     <tr>
                         <td class="classification_item">Java</td>
-                        <td class="classification_number">10</td>
+                        <td class="classification_number">{{java_blog}}</td>
                     </tr>
                     <tr>
-                        <td class="classification_item">Java</td>
-                        <td class="classification_number">10</td>
+                        <td class="classification_item">C</td>
+                        <td class="classification_number">{{c_blog}}</td>
                     </tr>
                     <tr>
-                        <td class="classification_item">Java</td>
-                        <td class="classification_number">10</td>
+                        <td class="classification_item">Flask</td>
+                        <td class="classification_number">{{ flask_blog }}</td>
+                    </tr>
+                    <tr>
+                        <td class="classification_item">OpenGL</td>
+                        <td class="classification_number">{{ opengl_blog }}</td>
+                    </tr>
+                    <tr>
+                        <td class="classification_item">Android</td>
+                        <td class="classification_number">{{android_blog}}</td>
+                    </tr>
+                    <tr>
+                        <td class="classification_item">Python</td>
+                        <td class="classification_number">{{python_blog}}</td>
                     </tr>
                 </table>
             </div>
 
-            <div style="width: 100%">
+            <div style="width: 90%">
                 <div id="rankings_title">
                     Rankings
                 </div>
@@ -100,13 +112,15 @@
     <div id="main_content">
         {% block blog_content %}
             <div style="width: 100%" id="searchBlog">
-                <input id="searchQuery" type="text">
-                <button onclick="searchBlog()">Search</button>
+                <form action="" method="post" novalidate>
+                    {{ form.hidden_tag() }}
+                    <P>{{ form.search }}{{ form.submitSearch }}</P>
+                </form>
             </div>
             <div id="blog_list">
                 <div>
                     {% for blogs in all_blog_information %}
-                        {{ blog_list_item(blogs.title," ",blogs.time,blogs.click, blogs.comment) }}
+                        {{ blog_list_item(blogs.title,"",blogs.time,blogs.click, blogs.comment) }}
                     {% endfor %}
                 </div>
             </div>

@@ -8,33 +8,49 @@
         <div class="item_image_container">
             {% if  type== "APK" %}
                 <img src="{{ url_for('static',filename="assets/resources_item/apk.png") }}"
-                     style="width: 80px;height: 80px">
+                     style="width: 80px;height: 80px;margin-top: 10px">
             {% elif type=="JAR" %}
                 <img src="{{ url_for('static',filename="assets/resources_item/jar.png") }}"
-                     style="width: 80px;height: 80px">
+                     style="width: 80px;height: 80px;margin-top: 10px">
             {% elif type=="DOC" %}
                 <img src="{{ url_for('static',filename="assets/resources_item/doc.png") }}"
-                     style="width: 80px;height: 80px">
+                     style="width: 80px;height: 80px;margin-top: 10px">
             {% elif type=="EXCEL" %}
                 <img src="{{ url_for('static',filename="assets/resources_item/excel.png") }}"
-                     style="width: 80px;height: 80px">
+                     style="width: 80px;height: 80px;margin-top: 10px">
             {% elif type=="PDF" %}
                 <img src="{{ url_for('static',filename="assets/resources_item/pdf.png") }}"
-                     style="width: 80px;height: 80px">
+                     style="width: 80px;height: 80px;margin-top: 10px">
             {% elif type=="PPT" %}
                 <img src="{{ url_for('static',filename="assets/resources_item/ppt.png") }}"
-                     style="width: 80px;height: 80px">
+                     style="width: 80px;height: 80px;margin-top: 10px">
             {% elif type=="PYTHON" %}
                 <img src="{{ url_for('static',filename="assets/resources_item/python.png") }}"
-                     style="width: 80px;height: 80px">
+                     style="width: 80px;height: 80px;margin-top: 10px">
             {% elif type=="ZIP" %}
                 <img src="{{ url_for('static',filename="assets/resources_item/zip.png") }}"
-                     style="width: 80px;height: 80px">
+                     style="width: 80px;height: 80px;margin-top: 10px">
             {% endif %}
         </div>
         <div class="item_information_container">
             <div class="item_information_title">
-                <a href="{{ url_for('download',filename=file_name) }}"> {{ name }}</a>
+                {% if  type== "APK" %}
+                    <a href="{{ url_for('download',filename=file_name+".apk") }}"> {{ name }}</a>
+                {% elif type=="JAR" %}
+                    <a href="{{ url_for('download',filename=file_name+".jar") }}"> {{ name }}</a>
+                {% elif type=="DOC" %}
+                    <a href="{{ url_for('download',filename=file_name+".doc") }}"> {{ name }}</a>
+                {% elif type=="EXCEL" %}
+                    <a href="{{ url_for('download',filename=file_name+".xls") }}"> {{ name }}</a>
+                {% elif type=="PDF" %}
+                    <a href="{{ url_for('download',filename=file_name+".pdf") }}"> {{ name }}</a>
+                {% elif type=="PPT" %}
+                    <a href="{{ url_for('download',filename=file_name+".ppt") }}"> {{ name }}</a>
+                {% elif type=="PYTHON" %}
+                    <a href="{{ url_for('download',filename=file_name+".py") }}"> {{ name }}</a>
+                {% elif type=="ZIP" %}
+                    <a href="{{ url_for('download',filename=file_name+".zip") }}"> {{ name }}</a>
+                {% endif %}
             </div>
             <div class="item_information_description">
                 {{ basic_info }}
@@ -55,10 +71,12 @@
                 <dt>Field</dt>
                 <dd>
                     <a href="{{ url_for('resources') }}" rel="" name="mode" class="all on">All</a>
-                    <a href="{{ url_for('resources_search',keyword="JAVA") }}" rel="" name="mode" class="default">Java</a>
+                    <a href="{{ url_for('resources_search',keyword="JAVA") }}" rel="" name="mode"
+                       class="default">Java</a>
                     <a href="{{ url_for('resources_search',keyword="C") }}" rel="" name="mode" class="default">C/C++</a>
                     <a href="{{ url_for('resources_search',keyword="OPENGL") }}" rel="" name="mode" class="default">OpenGL</a>
-                    <a href="{{ url_for('resources_search',keyword="FLASK") }}" rel="" name="mode" class="default">Flask</a>
+                    <a href="{{ url_for('resources_search',keyword="FLASK") }}" rel="" name="mode"
+                       class="default">Flask</a>
                     <a href="{{ url_for('resources_search',keyword="ANDROID") }}" rel="" name="mode" class="default">Android</a>
                     <a href="{{ url_for('resources_search',keyword="PYTHON") }}" rel="" name="theme" class="default">PYTHON</a>
                 </dd>
@@ -67,12 +85,17 @@
                 <dt>Type</dt>
                 <dd>
                     <a href="{{ url_for('resources') }}" rel="" name="theme" class="all on">All</a>
-                    <a href="{{ url_for('resources_search',keyword="JAR") }}" rel="" name="theme" class="default">JAR</a>
-                    <a href="{{ url_for('resources_search',keyword="DOC") }}" rel="" name="theme" class="default">DOC</a>
-                    <a href="{{ url_for('resources_search',keyword="PPT") }}" rel="" name="theme" class="default">PPT</a>
+                    <a href="{{ url_for('resources_search',keyword="JAR") }}" rel="" name="theme"
+                       class="default">JAR</a>
+                    <a href="{{ url_for('resources_search',keyword="DOC") }}" rel="" name="theme"
+                       class="default">DOC</a>
+                    <a href="{{ url_for('resources_search',keyword="PPT") }}" rel="" name="theme"
+                       class="default">PPT</a>
                     <a href="{{ url_for('resources_search',keyword="EXCEL") }}" rel="" name="theme" class="default">EXCEL</a>
-                    <a href="{{ url_for('resources_search',keyword="ZIP") }}" rel="" name="theme" class="default">ZIP</a>
-                    <a href="{{ url_for('resources_search',keyword="APK") }}" rel="" name="theme" class="default">APK</a>
+                    <a href="{{ url_for('resources_search',keyword="ZIP") }}" rel="" name="theme"
+                       class="default">ZIP</a>
+                    <a href="{{ url_for('resources_search',keyword="APK") }}" rel="" name="theme"
+                       class="default">APK</a>
                 </dd>
             </dl>
         </div>

@@ -1,5 +1,12 @@
 {% extends 'index.html' %}
 
-{% block blog_content%}
-
+{% block blog_content %}
+    you are searching something like "{{ keyword }}"
+    <div id="blog_list">
+        <div>
+            {% for blogs in search_blog_information %}
+                {{ blog_list_item(blogs.title," ",blogs.time,blogs.click, blogs.comment) }}
+            {% endfor %}
+        </div>
+    </div>
 {% endblock %}

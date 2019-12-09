@@ -2,31 +2,56 @@
 # 此处我们定义了一系列的路由
 
 from flask import render_template, flash, redirect, url_for, session, send_from_directory, request
-from sqlalchemy import and_
+from sqlalchemy import and_, or_
 from werkzeug.security import generate_password_hash, check_password_hash
 from blogapp import app,db
 from blogapp.config import Config
-from blogapp.form import LoginFrom, SignUpForm,CommentForm
+from blogapp.form import LoginFrom, SignUpForm,CommentForm,SearchBlog
 from blogapp.models import User, Blog, Comment, Resource
 import os
+import random
 
 
-@app.route('/')
-@app.route('/index')
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index', methods=['GET', 'POST'])
 def index():
+    form = SearchBlog()
     username = session.get("USERNAME")
     path = os.path.split(os.path.realpath(__file__))[0]+os.sep+'templates'+os.sep+'blogs'
     files = os.listdir(path)
     all_blog_information = []
+    original = Blog.query.filter_by().count()
+    fans = User.query.filter_by().count()
+    comments_total=Comment.query.filter_by().count()
+
+    java_blog = Blog.query.filter_by(tag='Java').count()
+    c_blog = Blog.query.filter_by(tag='C').count()
+    flask_blog = Blog.query.filter_by(tag='Flask').count()
+    opengl_blog = Blog.query.filter_by(tag='OpenGL').count()
+    android_blog = Blog.query.filter_by(tag='Android').count()
+    python_blog = Blog.query.filter_by(tag='Python').count()
     for file in files:
         name = os.path.splitext(file)[0]
-        print(name)
-        blog = Blog.query.filter_by(title=name).first()
+        blog =Blog.query.filter_by(title=name).first()
         if blog:
             print(blog.id)
             comments = Comment.query.filter_by(blog_id=blog.id).count()
             all_blog_information.append({'title': name,'tag': blog.tag,'click': blog.click, 'time': blog.time,'comment': comments})
-    return render_template('index.html', all_blog_information=all_blog_information, username=username)
+    if form.validate_on_submit():
+        keyword=form.search.data
+        return redirect(url_for('blog_search',keyword=keyword))
+    return render_template('index.html', all_blog_information=all_blog_information,
+                           username=username,
+                           form=form,
+                           original=original,
+                           fans=fans,
+                           comments_total=comments_total,
+                           java_blog=java_blog,
+                           c_blog=c_blog,
+                           flask_blog=flask_blog,
+                           opengl_blog=opengl_blog,
+                           android_blog=android_blog,
+                           python_blog=python_blog)
 
 
 @app.route('/login', methods=['GET','POST'])
@@ -65,7 +90,7 @@ def contact():
     return render_template('contact.html')
 
 
-@app.route('/album',methods=["GET", "POST"])
+@app.route('/album', methods=["GET", "POST"])
 def album():
     return render_template('album.html')
 
@@ -229,8 +254,15 @@ def pictureDisplay(type):
 def download(filename):
     if request.method == "GET":
         path = os.path.split(os.path.realpath(__file__))[0] + os.sep+'static'+os.sep+'download'+os.sep+filename
+        print(path)
         if os.path.isfile(path):
             dir = os.path.split(os.path.realpath(__file__))[0] + os.sep+'static'+os.sep+'download'
+            item_name=os.path.splitext(filename)[0]
+            print(item_name)
+            resource_download = Resource.query.filter_by(name=item_name).first()
+            resource_download.download=resource_download.download+1
+            db.session.add(resource_download)
+            db.session.commit()
             return send_from_directory(dir, filename, as_attachment=True)
         pass
 
@@ -243,18 +275,29 @@ def blogContent(blog_name):
     db.session.add(blog)
     db.session.commit()
 
+    original = Blog.query.filter_by().count()
+    fans = User.query.filter_by().count()
+    comments_total = Comment.query.filter_by().count()
+    java_blog = Blog.query.filter_by(tag='Java').count()
+    c_blog = Blog.query.filter_by(tag='C').count()
+    flask_blog = Blog.query.filter_by(tag='Flask').count()
+    opengl_blog = Blog.query.filter_by(tag='OpenGL').count()
+    android_blog = Blog.query.filter_by(tag='Android').count()
+    python_blog = Blog.query.filter_by(tag='Python').count()
+
     form = CommentForm()
     blog_name = 'blogs/'+blog_name+'.html'
     print(blog_name)
     print(blog.id)
     comments=[]
-    comments_in_db = Comment.query.filter(Comment.blog_id == blog.id).all();
+    comments_in_db = Comment.query.filter(Comment.blog_id == blog.id).all()
     for comment in comments_in_db:
+        icon_index = str(random.randint(1, 6))
         username = User.query.filter(User.id == comment.user_id).first()
-        comments.append({'username': username, 'information': comment.information})
+        comments.append({'username': username.username, 'information': comment.information,'icon':icon_index})
 
-    username = session.get("USERNAME")
-    if username:
+    log_in_username = session.get("USERNAME")
+    if log_in_username:
         print("HAVE LOG IN")
         if form.validate_on_submit():
             print(session.get('USERNAME'))
@@ -264,4 +307,57 @@ def blogContent(blog_name):
             db.session.commit()
     else:
         print("HAVE NOT LOG IN")
-    return render_template('blogContent.html', name=blog_name, form=form,comments_in_db=comments)
+    return render_template('blogContent.html',
+                           name=blog_name,
+                           form=form,
+                           comments_in_db=comments,
+                           original=original,
+                           fans=fans,
+                           comments_total=comments_total,
+                           java_blog=java_blog,
+                           c_blog=c_blog,
+                           flask_blog=flask_blog,
+                           opengl_blog=opengl_blog,
+                           android_blog=android_blog,
+                           python_blog=python_blog
+                           )
+
+
+@app.route('/blog_search/<keyword>',methods=['GET','POST'])
+def blog_search(keyword):
+    username = session.get("USERNAME")
+    path = os.path.split(os.path.realpath(__file__))[0] + os.sep + 'templates' + os.sep + 'blogs'
+    files = os.listdir(path)
+    search_blog_information = []
+    for file in files:
+        name = os.path.splitext(file)[0]
+        blog =Blog.query.filter(Blog.title == name, or_(Blog.title.like('%'+keyword+'%'), Blog.tag.like('%'+keyword+'%'))).first()
+
+        if blog:
+            print(blog.id)
+            comments = Comment.query.filter(Comment.blog_id==blog.id).count()
+            search_blog_information.append({'title': name,'tag': blog.tag,'click': blog.click, 'time': blog.time,'comment': comments})
+    original = Blog.query.filter_by().count()
+    fans = User.query.filter_by().count()
+    comments_total = Comment.query.filter_by().count()
+
+    java_blog = Blog.query.filter_by(tag='Java').count()
+    c_blog = Blog.query.filter_by(tag='C').count()
+    flask_blog = Blog.query.filter_by(tag='Flask').count()
+    opengl_blog = Blog.query.filter_by(tag='OpenGL').count()
+    android_blog = Blog.query.filter_by(tag='Android').count()
+    python_blog = Blog.query.filter_by(tag='Python').count()
+
+    return render_template('blog_search.html',
+                           search_blog_information=search_blog_information,
+                           keyword=keyword,
+                           username=username,
+                           original=original,
+                           fans=fans,
+                           comments_total=comments_total,
+                           java_blog=java_blog,
+                           c_blog=c_blog,
+                           flask_blog=flask_blog,
+                           opengl_blog=opengl_blog,
+                           android_blog=android_blog,
+                           python_blog=python_blog)

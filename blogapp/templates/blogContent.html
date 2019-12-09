@@ -1,6 +1,16 @@
 <link rel="stylesheet" href="{{ url_for('static',filename="css/blogContent.css") }}">
 
-{% macro comments() %}
+{% macro comment_item(username,information,icon) %}
+
+    <table style="width: 100%">
+        <tr>
+            <td rowspan="2" style="width: 70px;height: 70px">
+               <img class="portrait_icon" src="{{ url_for('static',filename='assets/portrait/'+icon+'.png') }}">
+            </td>
+            <td class="comment_username">{{ username }}</td>
+        </tr>
+        <tr><td class="comment_information"> {{ information }}</td></tr>
+    </table>
 
 {% endmacro %}
 
@@ -9,12 +19,9 @@
     {% include name %}
     <hr/>
     <ul>
-    {% for comment in comments_in_db %}
-        <dl>
-            <dt>{{ comment.username }}</dt>
-            <dd>{{ comment.information }}</dd>
-        </dl>
-    {% endfor %}
+        {% for comment in comments_in_db %}
+            {{ comment_item(comment.username,comment.information,comment.icon) }}
+        {% endfor %}
     </ul>
 
     <form action="" method="post" novalidate>

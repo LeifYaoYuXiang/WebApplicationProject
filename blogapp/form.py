@@ -18,14 +18,19 @@ class LoginFrom(FlaskForm):
 # 该表单用于申请账户界面
 class SignUpForm(FlaskForm):
     # 以下定义了一系列的表单元素
-    username = StringField('Input Username', validators=[DataRequired()])
-    password = PasswordField('Input Password', validators=[DataRequired()])
+    username = StringField('Input your username', validators=[DataRequired()])
+    password = PasswordField('Input your password', validators=[DataRequired()])
     password_ensure = PasswordField('Input your password again',validators=[DataRequired()])
-    email = StringField('Input Your Email',validators=[DataRequired(),email()])
+    email = StringField('Input your Email',validators=[DataRequired(),email()])
     accept_rules = BooleanField('I accept the site rules',validators=[DataRequired()])
     submit = SubmitField('Register')
 
 
 class CommentForm(FlaskForm):
-    comment = TextAreaField("Please made your comments",validators=[DataRequired()])
+    comment = TextAreaField("",validators=[DataRequired()])
     submit = SubmitField('Comment')
+
+
+class SearchBlog(FlaskForm):
+    search = StringField('search blogs here',validators=[DataRequired()])
+    submitSearch = SubmitField('Search')
