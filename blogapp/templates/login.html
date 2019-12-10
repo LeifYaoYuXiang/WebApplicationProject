@@ -5,19 +5,15 @@
 
     </div>
     <div id="login_div">
-        <h1>Sign In</h1>
+        <h1>Log In Your Account</h1>
         {% for msg in get_flashed_messages() %}
             <p>{{ msg }}</p>
         {% endfor %}
         {% block content %}
             <form action="" method="post" novalidate>
                 {{ form.hidden_tag() }}
-                <p>{{ form.username.label }}</p>
-                <P>{{ form.username(size=32) }}</P>
-
-                <p>{{ form.password.label }}</p>
-                <p>{{ form.password(size=32) }}</p>
-
+                <p>{{ form.username.label }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.username(size=32) }}</p>
+                <p>{{ form.password.label }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ form.password(size=32) }}</p>
                 <p>{{ form.remember_me.label }}{{ form.remember_me }}</p>
 
                 <P>{{ form.submit }}</P>
@@ -27,4 +23,12 @@
             </form>
         {% endblock %}
     </div>
+{% endblock %}
+
+{% block login %}
+    {% if username %}
+        {{ username }}
+    {% else %}
+        Login
+    {% endif %}
 {% endblock %}

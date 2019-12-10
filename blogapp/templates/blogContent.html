@@ -28,6 +28,23 @@
         {{ form.hidden_tag() }}
         <p>{{ form.comment.label }}</p>
         <P>{{ form.comment }}</P>
+        {% for error in form.comment.errors %}
+            <span style="color: red;">[{{ error }}]</span>
+        {% endfor %}
+        {% for msg in get_flashed_messages() %}
+            <p>{{ msg }}</p>
+        {% endfor %}
         <P>{{ form.submit }}</P>
     </form>
+{% endblock %}
+
+{% block ranking_list %}
+{% endblock %}
+
+{% block login %}
+    {% if username %}
+        {{ username }}
+    {% else %}
+        Login
+    {% endif %}
 {% endblock %}

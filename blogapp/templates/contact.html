@@ -1,67 +1,115 @@
 <link rel="stylesheet" href="{{ url_for('static',filename="css/contact.css") }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/chat.css') }}">
+
+
+{% macro new_item(type,news) %}
+    {% if type == "ASK" %}
+        <li>
+            <div class="nesHead"><img src="{{ url_for('static',filename='assets/chat/user.png') }}"/></div>
+            <div class="news"><img class="jiao" src="{{url_for('static',filename='assets/chat/talk.jpg')}}">{{news}}</div>
+        </li>
+    {% else %}
+        <li>
+            <div class="answerHead"><img src="{{ url_for('static',filename='assets/chat/administrator.png') }}"/></div>
+            <div class="answers"><img class="jiao" src="{{url_for('static',filename='assets/chat/answer.jpg')}}">{{news}}</div>
+        </li>
+    {% endif %}
+{% endmacro %}
 {% macro chat(name) %}
     <div class="qqBox">
-			<div class="context">
-				<div class="conRight">
-					<div class="Righthead">
-						<div class="headName">{{ name }}</div>
-					</div>
-                    <div class="RightCont">
-						<ul class="newsList">
-
-						</ul>
-					</div>
-					<div class="RightFoot">
-						<div class="inputBox">
-							<textarea id="dope" style="width: 99%;height: 75px; border: none;outline: none; resize: none" name="" rows="" cols=""></textarea>
-							<button class="sendBtn">发送(s)</button>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+        <div class="context">
+            <div class="conRight">
+                <div class="Righthead">
+                    <div class="headName">{{ name }}</div>
+                </div>
+                <div class="RightCont">
+                    <ul class="newsList">
+                        {{ new_item('ANSWER',"Hi!") }}
+                        {{ new_item('ANSWER',"Welcomme to my page.I am Leif, the owner of this page.") }}
+                        {{ new_item('ANSWER',"I am looking for your suggestions to make it better") }}
+                        {% if last_post %}
+                            {{ new_item('ASK',last_post.information) }}
+                            {{ new_item('ANSWER',"Thanks for your suggestion") }}
+                        {% endif %}
+                    </ul>
+                </div>
+                <div class="inputBox" style="background: #ffffff">
+                    <form action="" method="post" novalidate>
+                        {{ form.hidden_tag() }}
+                        <P>{{ form.post }}</P>
+                        <P>{{ form.submitSuggestion }}</P>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endmacro %}
 {% extends "base.html" %}
 
 {% block mainContent %}
     <div style="width: 1200px ; position: relative; margin: 0 auto">
         <aside class="contact_aside">
-        <img id="self_image" src="{{ url_for('static',filename='assets/leif.jpg') }}">
-        <div id="name_signature">
-            Leif
-        </div>
-        <div id="name_chinese">
-            Yao Yuxiang
-            <div id="simple_info">
-                One Stage3 Student in BDIC
+            <img id="self_image" src="{{ url_for('static',filename='assets/leif.jpg') }}">
+            <div id="name_signature">
+                Leif
             </div>
-        </div>
-        <table id="aside_table_contact_info">
-            <a href="mailto:yaoyuxiangyyx2009@126.com">
+            <div id="name_chinese">
+                Yao Yuxiang
+                <div id="simple_info">
+                    One Stage3 Student in BDIC
+                </div>
+            </div>
+
+            <table id="aside_table_contact_info">
                 <tr>
-                    <td>
-                        <a class="aside_icon_href" href="mailto:yaoyuxiangyyx2009@126.com">
-                            <div class="item_aside_table_contact_info">
-                                <img id="image_mailto" class="aside_icon" src="{{ url_for('static',filename='assets/mail.png') }}">Mail
-                            </div>
-                        </a>
-                    </td>
+                    <td><img id="image_mailto" class="aside_icon"
+                             src="{{ url_for('static',filename='assets/mail.png') }}"></td>
+                    <td><a href="mailto:yaoyuxiangyyx2009@126.com">yaoyuxiangyyx2009@126.com</a></td>
                 </tr>
-            </a>
-            <tr>
-                <td>
-                    <a class="aside_icon_href" href="https://github.com/LeifYaoYuXiang">
-                        <div class="item_aside_table_contact_info">
-                            <img id="image_github" class="aside_icon" src="{{ url_for('static',filename='assets/github.png') }}">Github
-                        </div>
-                    </a>
-                </td>
-            </tr>
-        </table>
-    </aside>
+                <tr>
+                    <td><img id="image_github" class="aside_icon"
+                             src="{{ url_for('static',filename='assets/csdn.png') }}"></td>
+                    <td><a href="https://www.csdn.net/">Leif_Yao</a></td>
+                </tr>
+                <tr>
+                    <td><img id="image_github" class="aside_icon"
+                             src="{{ url_for('static',filename='assets/phone.png') }}"></td>
+                    <td>86-18701597327</td>
+                </tr>
+                <tr>
+                    <td><img id="image_github" class="aside_icon"
+                             src="{{ url_for('static',filename='assets/qq.png') }}"></td>
+                    <td><a href="https://www.qq.com/">1307180072</a></td>
+                </tr>
+                <tr>
+                    <td><img id="image_github" class="aside_icon"
+                             src="{{ url_for('static',filename='assets/wechat.png') }}"></td>
+                    <td>Leif990327</td>
+                </tr>
+                <tr>
+                    <td><img id="image_github" class="aside_icon"
+                             src="{{ url_for('static',filename='assets/github.png') }}"></td>
+                    <td>LeifYaoYuXiang</td>
+                </tr>
+                 <tr>
+                    <td><img id="image_github" class="aside_icon"
+                             src="{{ url_for('static',filename='assets/map.png') }}"></td>
+                     <td><a href="https://map.baidu.com/poi/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6/@12967536.090953758,4822280.601647398,13.63z?uid=8fd50150a1dc2bb63c9a5ed4&ugc_type=3&ugc_ver=1&device_ratio=2&compat=1&querytype=detailConInfo&da_src=shareurl">Beijing University of Technology</a></td>
+                </tr>
+            </table>
+
+        </aside>
         <div id="main_information_right_part" style="margin-top: 290px">
-            {{chat("Please write down your suggestions, thanks!")}}
+            {{ chat("Please write down your suggestions, thanks!") }}
         </div>
     </div>
 {% endblock %}
+
+{% block login %}
+    {% if username %}
+        {{ username }}
+    {% else %}
+        Login
+    {% endif %}
+{% endblock %}
+

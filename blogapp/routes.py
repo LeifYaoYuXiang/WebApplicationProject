@@ -6,8 +6,8 @@ from sqlalchemy import and_, or_
 from werkzeug.security import generate_password_hash, check_password_hash
 from blogapp import app,db
 from blogapp.config import Config
-from blogapp.form import LoginFrom, SignUpForm,CommentForm,SearchBlog
-from blogapp.models import User, Blog, Comment, Resource
+from blogapp.form import LoginFrom, SignUpForm,CommentForm,SearchBlog,SuggestionPost
+from blogapp.models import User, Blog, Comment, Resource,Suggesstion
 import os
 import random
 
@@ -34,9 +34,13 @@ def index():
         name = os.path.splitext(file)[0]
         blog =Blog.query.filter_by(title=name).first()
         if blog:
-            print(blog.id)
             comments = Comment.query.filter_by(blog_id=blog.id).count()
-            all_blog_information.append({'title': name,'tag': blog.tag,'click': blog.click, 'time': blog.time,'comment': comments})
+            all_blog_information.append({'title': name,
+                                         'tag': blog.tag,
+                                         'click': blog.click,
+                                         'time': blog.time,
+                                         'comment': comments})
+    all_blog_information.sort(key=lambda x: x["click"],reverse=True)
     if form.validate_on_submit():
         keyword=form.search.data
         return redirect(url_for('blog_search',keyword=keyword))
@@ -57,6 +61,11 @@ def index():
 @app.route('/login', methods=['GET','POST'])
 def login():
     form = LoginFrom()
+    username=session.get('USERNAME')
+    if username:
+        flash('You have log in one account,may you want to log in another one')
+    else:
+        flash('You have not log in! Please log in and then you are able to make comments')
     if form.validate_on_submit():
         user_in_db = User.query.filter(User.username == form.username.data).first()
         if not user_in_db:
@@ -68,7 +77,7 @@ def login():
             session['USER_ID']=user_in_db.id
             return redirect(url_for("index"))
         flash('Incorrect Password')
-    return render_template('login.html', form=form)
+    return render_template('login.html', form=form,username=username)
 
 
 @app.route('/signup',methods=['GET','POST'])
@@ -87,16 +96,31 @@ def signup():
 
 @app.route('/contact',methods=["GET", "POST"])
 def contact():
-    return render_template('contact.html')
+    form=SuggestionPost()
+    log_in_username = session.get("USERNAME")
+    if log_in_username:
+        if form.validate_on_submit():
+            user_in_db = User.query.filter(User.username == session.get('USERNAME')).first()
+            suggestion = Suggesstion(suggestion=form.post.data,user_id=user_in_db.id)
+            db.session.add(suggestion)
+            db.session.commit()
+            form.post.data = ""
+            last_post={'information':suggestion.suggestion}
+            return render_template('contact.html',form=form,last_post=last_post)
+    else:
+        flash("You have not log in yet!")
+    return render_template('contact.html',form=form,username=log_in_username)
 
 
 @app.route('/album', methods=["GET", "POST"])
 def album():
-    return render_template('album.html')
+    log_in_username = session.get("USERNAME")
+    return render_template('album.html',username=log_in_username)
 
 
 @app.route('/resources',methods=["GET", "POST"])
 def resources():
+    log_in_username = session.get("USERNAME")
     path = os.path.split(os.path.realpath(__file__))[0] + os.sep + 'static' + os.sep + 'download'
     files = os.listdir(path)
     resources_in_db = []
@@ -109,6 +133,8 @@ def resources():
             type = os.path.splitext(file)[1]
             if type=='.zip':
                 type = 'ZIP'
+            elif type == '.jar':
+                type = 'JAR'
             elif type == '.apk':
                 type = 'APK'
             elif type == '.ppt':
@@ -125,11 +151,12 @@ def resources():
         else:
             print("NOT FOUND")
     print(resources_in_db)
-    return render_template('resources.html',resources_in_db=resources_in_db)
+    return render_template('resources.html',resources_in_db=resources_in_db,username=log_in_username)
 
 
 @app.route('/resources_search/<keyword>',methods=["GET", "POST"])
 def resources_search(keyword):
+    log_in_username = session.get("USERNAME")
     path = os.path.split(os.path.realpath(__file__))[0] + os.sep + 'static' + os.sep + 'download'
     files = os.listdir(path)
     resources_in_db = []
@@ -145,6 +172,8 @@ def resources_search(keyword):
                     type = 'ZIP'
                 elif type == '.apk':
                     type = 'APK'
+                elif type == '.jar':
+                    type = 'JAR'
                 elif type == '.ppt':
                     type = 'PPT'
                 elif type == '.py':
@@ -161,11 +190,12 @@ def resources_search(keyword):
                 print("NOT FOUND")
         print(resources_in_db)
     else:
-        print('HELLO')
         for file in files:
             type = os.path.splitext(file)[1]
             if type == '.zip':
                 type = 'ZIP'
+            elif type == '.jar':
+                type = 'JAR'
             elif type == '.apk':
                 type = 'APK'
             elif type == '.ppt':
@@ -185,7 +215,7 @@ def resources_search(keyword):
                 fsize = round(f_pos / float(1024), 2)
                 resources_in_db.append({'name': resource.name, 'description': resource.description, 'tag': resource.tag,
                                         'download': resource.download, 'size': fsize, 'type': type})
-    return render_template('resources_search.html', keyword=keyword,resources_in_db=resources_in_db)
+    return render_template('resources_search.html', keyword=keyword,resources_in_db=resources_in_db,username=log_in_username)
 
 
 @app.route('/game',methods=['GET','POST'])
@@ -195,6 +225,7 @@ def game():
 
 @app.route('/pictureDisplay/<type>', methods=['GET','POST'])
 def pictureDisplay(type):
+    username=session.get('USERNAME')
     print(type)
     path = '';
     temp_pics = [];
@@ -247,7 +278,7 @@ def pictureDisplay(type):
             print(pic)
             pics.append(pic)
         print(pics)
-    return render_template('pictureDisplay.html',pics=pics)
+    return render_template('pictureDisplay.html',pics=pics,username=username)
 
 
 @app.route('/download/<string:filename>', methods=['GET'])
@@ -286,9 +317,8 @@ def blogContent(blog_name):
     python_blog = Blog.query.filter_by(tag='Python').count()
 
     form = CommentForm()
-    blog_name = 'blogs/'+blog_name+'.html'
-    print(blog_name)
-    print(blog.id)
+    blog_path = 'blogs/'+blog_name+'.html'
+
     comments=[]
     comments_in_db = Comment.query.filter(Comment.blog_id == blog.id).all()
     for comment in comments_in_db:
@@ -298,17 +328,17 @@ def blogContent(blog_name):
 
     log_in_username = session.get("USERNAME")
     if log_in_username:
-        print("HAVE LOG IN")
         if form.validate_on_submit():
-            print(session.get('USERNAME'))
             user_in_db = User.query.filter(User.username == session.get('USERNAME')).first()
             comment = Comment(information=form.comment.data,blog_id=blog.id,user_id=user_in_db.id)
             db.session.add(comment)
             db.session.commit()
+            form.comment.data=""
+            return redirect(url_for('blogContent', blog_name=blog_name))
     else:
-        print("HAVE NOT LOG IN")
+        flash("You have not log in yet!")
     return render_template('blogContent.html',
-                           name=blog_name,
+                           name=blog_path,
                            form=form,
                            comments_in_db=comments,
                            original=original,
@@ -319,8 +349,8 @@ def blogContent(blog_name):
                            flask_blog=flask_blog,
                            opengl_blog=opengl_blog,
                            android_blog=android_blog,
-                           python_blog=python_blog
-                           )
+                           python_blog=python_blog,
+                           username=log_in_username)
 
 
 @app.route('/blog_search/<keyword>',methods=['GET','POST'])
@@ -332,7 +362,6 @@ def blog_search(keyword):
     for file in files:
         name = os.path.splitext(file)[0]
         blog =Blog.query.filter(Blog.title == name, or_(Blog.title.like('%'+keyword+'%'), Blog.tag.like('%'+keyword+'%'))).first()
-
         if blog:
             print(blog.id)
             comments = Comment.query.filter(Comment.blog_id==blog.id).count()

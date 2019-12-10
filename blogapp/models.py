@@ -45,3 +45,12 @@ class Resource(db.Model):
 
     def __repr__(self):
         return '<name {}>'.format(self.name)
+
+
+class Suggesstion(db.Model):
+    id = db.Column(db.Integer,primary_key=True)
+    suggestion=db.Column(db.String(140))
+    user_id=db.Column(db.Integer, db.ForeignKey('user.id'))
+
+    def __repr__(self):
+        return '<suggestion {}>'.format(self.suggestion)

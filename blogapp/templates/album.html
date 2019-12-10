@@ -13,4 +13,12 @@
     </div>
 {% endblock %}
 
+{% block login %}
+    {% if username %}
+        {{ username }}
+    {% else %}
+        Login
+    {% endif %}
+{% endblock %}
+
 <script src="{{ url_for('static',filename="js/album.js") }}"></script>

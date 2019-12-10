@@ -16,3 +16,11 @@
     {% endfor %}
     </div>
 {% endblock %}
+
+{% block login %}
+    {% if username %}
+        {{ username }}
+    {% else %}
+        Login
+    {% endif %}
+{% endblock %}

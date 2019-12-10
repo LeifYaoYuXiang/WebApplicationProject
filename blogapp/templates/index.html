@@ -22,6 +22,17 @@
     </div>
 {% endmacro %}
 
+{% macro ranking_item(title,click) %}
+    <tr>
+        <td class="classification_item">
+            <a href="{{ url_for('blogContent',blog_name=title) }}">
+                {{ title }}
+            </a>
+        </td>
+        <td class="classification_number">{{ click }}</td>
+    </tr>
+{% endmacro %}
+
 {% extends "base.html" %}
 {% block login %}
     {% if username %}
@@ -52,13 +63,13 @@
                 </tr>
                 <tr>
                     <td class="aside_data">
-                        {{original}}
+                        {{ original }}
                     </td>
                     <td class="aside_data">
-                        {{fans}}
+                        {{ fans }}
                     </td>
                     <td class="aside_data">
-                        {{comments_total}}
+                        {{ comments_total }}
                     </td>
                 </tr>
             </table>
@@ -69,11 +80,11 @@
                 <table id="classification-table" style="width: 90%">
                     <tr>
                         <td class="classification_item">Java</td>
-                        <td class="classification_number">{{java_blog}}</td>
+                        <td class="classification_number">{{ java_blog }}</td>
                     </tr>
                     <tr>
                         <td class="classification_item">C</td>
-                        <td class="classification_number">{{c_blog}}</td>
+                        <td class="classification_number">{{ c_blog }}</td>
                     </tr>
                     <tr>
                         <td class="classification_item">Flask</td>
@@ -85,27 +96,26 @@
                     </tr>
                     <tr>
                         <td class="classification_item">Android</td>
-                        <td class="classification_number">{{android_blog}}</td>
+                        <td class="classification_number">{{ android_blog }}</td>
                     </tr>
                     <tr>
                         <td class="classification_item">Python</td>
-                        <td class="classification_number">{{python_blog}}</td>
+                        <td class="classification_number">{{ python_blog }}</td>
                     </tr>
                 </table>
             </div>
 
             <div style="width: 90%">
-                <div id="rankings_title">
-                    Rankings
-                </div>
-                <ul style="width: 100%">
-                    <li class="rankings_list_item">
-                        <span class="ranking_name">Hello World</span>
-                    </li>
-                    <li class="rankings_list_item">
-                        <span class="ranking_name">Hello World</span>
-                    </li>
-                </ul>
+                {% block ranking_list %}
+                    <div id="rankings_title">
+                        Rankings
+                    </div>
+                    <table id="classification-table" style="width: 90%">
+                        {% for item in all_blog_information %}
+                            {{ ranking_item(item.title,item.click) }}
+                        {% endfor %}
+                    </table>
+                {% endblock %}
             </div>
         </div>
     </aside>

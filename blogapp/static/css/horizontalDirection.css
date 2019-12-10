@@ -5,25 +5,6 @@ body{
     font-family: Arial;
     background: #aaaaaa;
 }
-a{
-    text-decoration: none;
-    color: black;
-}
-
-a:hover{
-    text-decoration: none;!important;
-    color: black;!important;
-}
-
-a:visited{
-    text-decoration: none;!important;
-    color: black;!important;
-}
-
-a:link{
-    text-decoration: none;!important;
-    color: black;!important;
-}
 
 .horizon_display_list{
     width: 100%;

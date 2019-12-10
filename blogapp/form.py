@@ -34,3 +34,8 @@ class CommentForm(FlaskForm):
 class SearchBlog(FlaskForm):
     search = StringField('search blogs here',validators=[DataRequired()])
     submitSearch = SubmitField('Search')
+
+
+class SuggestionPost(FlaskForm):
+    post = TextAreaField("",validators=[DataRequired()])
+    submitSuggestion=SubmitField('Send')

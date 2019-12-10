@@ -10,3 +10,14 @@
         </div>
     </div>
 {% endblock %}
+
+{% block ranking_list %}
+{% endblock %}
+
+{% block login %}
+    {% if username %}
+        {{ username }}
+    {% else %}
+        Login
+    {% endif %}
+{% endblock %}
