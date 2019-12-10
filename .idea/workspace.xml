@@ -2,42 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b1ac9675-2a21-4cc8-a909-45291d70de53" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/blogapp/static/assets/chat/answer.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blogapp/static/assets/chat/talk.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blogapp/static/assets/csdn.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blogapp/static/assets/map.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blogapp/static/assets/phone.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blogapp/static/assets/qq.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blogapp/static/assets/wechat.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/blogapp/static/download/games.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogapp/blogdb.db" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/blogdb.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/form.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/form.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/routes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/static/assets/chat/boxHead_background.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/static/assets/mail.png" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/static/assets/mail.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/static/css/basic.css" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/static/css/basic.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/static/css/chat.css" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/static/css/chat.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/static/css/contact.css" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/static/css/contact.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/static/css/horizontalDirection.css" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/static/css/horizontalDirection.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/static/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/static/css/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/static/js/chat.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/templates/album.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/templates/album.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/templates/blogContent.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/templates/blogContent.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/templates/blog_search.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/templates/blog_search.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/templates/blogs/Flask is best.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/templates/blogs/Flask is best.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/templates/blogs/Hello C.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/templates/blogs/Hello C.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/templates/blogs/Introduction to Java.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/templates/blogs/Introduction to Java.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/templates/blogs/My Way to Android.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/templates/blogs/My Way to Android.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/templates/blogs/What is OpenGL.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/templates/blogs/What is OpenGL.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/templates/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/templates/contact.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/templates/login.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/templates/pictureDisplay.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/templates/pictureDisplay.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/templates/resources.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/templates/resources.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/templates/resources_search.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/templates/resources_search.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -215,6 +181,7 @@
       <workItem from="1575889113420" duration="16771000" />
       <workItem from="1575911737652" duration="12153000" />
       <workItem from="1575943045789" duration="9759000" />
+      <workItem from="1575963216095" duration="2926000" />
     </task>
     <servers />
   </component>
@@ -235,6 +202,6 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/microblog$microblog.coverage" NAME="microblog Coverage Results" MODIFIED="1575959794686" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/microblog$microblog.coverage" NAME="microblog Coverage Results" MODIFIED="1575963228240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
