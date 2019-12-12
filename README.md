@@ -53,6 +53,7 @@ Table：  *blog*
 | tag | the tag belongs to this blog |
 | time | the time when one blog is published |
 | click | how many times this blog has been viewed |
+
 Table： *comment*
 
 | Field       | Meaning                                                    |
