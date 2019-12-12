@@ -1,6 +1,6 @@
 # encoding:utf-8
 # 在form.py中，我们定义了一系列即将用于web网页的表单，我们在此定义表单中包含的元素，以及对元素的相关检验
-
+# the following code is referenced from Week 10
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField,TextAreaField
 from wtforms.validators import DataRequired,email

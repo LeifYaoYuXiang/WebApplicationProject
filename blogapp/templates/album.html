@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="{{ url_for('static',filename="css/album.css") }}">
 {% extends "base.html" %}
 {% block mainContent %}
+    {# the fowllowig div is  #}
     <div id="album_wall">
         <ul class="polaroids">
 			<li><a href="{{ url_for('pictureDisplay',type="LIFE") }}" title="Daily Life"><img src="{{ url_for('static',filename='assets/painting_wall/life.jpg') }}" alt="Daily Life"></a></li>
@@ -21,4 +22,3 @@
     {% endif %}
 {% endblock %}
 
-<script src="{{ url_for('static',filename="js/album.js") }}"></script>

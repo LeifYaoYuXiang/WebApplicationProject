@@ -7,7 +7,10 @@ textarea{
     padding: 10px;
     resize: none;
 }
-
+/*I got the idea from: https://www.jianshu.com/p/c793fc0a5413
+After inspect the code from the website, I write the following CSS
+I make some modifications according to this context
+I promise I can answer questions if you ask some related questions*/
 #submit{
     color: #fff;
     text-shadow: 0 -1px 0 rgba(0,0,0,0.12);

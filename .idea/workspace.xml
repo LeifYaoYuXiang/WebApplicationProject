@@ -2,8 +2,44 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b1ac9675-2a21-4cc8-a909-45291d70de53" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/blogapp/static/assets/logout.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/blogapp/static/js/jquery-3.4.1.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogapp/blogdb.db" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/blogdb.db" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/form.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/form.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/routes.py" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/routes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/static/assets/game/boom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/static/assets/game/hammer.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/static/assets/game/hammerdown.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/static/assets/game/hole.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/static/assets/game/mouse.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/static/css/album.css" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/static/css/album.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/static/css/blogContent.css" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/static/css/blogContent.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/static/css/chat.css" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/static/css/chat.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/static/css/contact.css" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/static/css/contact.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/static/css/game.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/static/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/static/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/static/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/static/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/static/css/pictureDisplay.css" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/static/css/pictureDisplay.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/static/css/resources.css" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/static/css/resources.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/static/css/signup.css" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/static/css/signup.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/static/js/album.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/static/js/background.js" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/static/js/background.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/static/js/game.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/static/js/login.js" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/static/js/login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/templates/album.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/templates/album.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/templates/blogContent.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/templates/blogContent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/templates/chat.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/templates/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/templates/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/templates/game.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/templates/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/templates/pictureDisplay.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/templates/pictureDisplay.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/templates/resources.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/templates/resources.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/templates/sign_up.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/templates/sign_up.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,14 +82,17 @@
     </expand>
     <select />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="microblog" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Flask Main" />
         <option value="Python Script" />
-        <option value="JavaScript File" />
         <option value="HTML File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -79,19 +118,19 @@
     <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Public\PycharmProjects\microblog\blogapp\static\assets" />
-      <recent name="C:\Users\Public\PycharmProjects\microblog\blogapp\static\assets\chat" />
-      <recent name="C:\Users\Public\PycharmProjects\microblog\blogapp\static\assets\portrait" />
-      <recent name="C:\Users\Public\PycharmProjects\microblog\blogapp\static\assets\resources_item" />
-      <recent name="C:\Users\Public\PycharmProjects\microblog\blogapp\static\assets\album_life" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Public\PycharmProjects\microblog\blogapp\static\assets" />
       <recent name="C:\Users\Public\PycharmProjects\microblog\blogapp\static\assets\album_acg" />
       <recent name="C:\Users\Public\PycharmProjects\microblog\blogapp\static\assets\resources_item" />
       <recent name="C:\Users\Public\PycharmProjects\microblog\blogapp\static\assets\chat" />
       <recent name="C:\Users\Public\PycharmProjects\microblog\blogapp\static" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Public\PycharmProjects\microblog\blogapp\static\assets" />
+      <recent name="C:\Users\Public\PycharmProjects\microblog\blogapp\static\js" />
+      <recent name="C:\Users\Public\PycharmProjects\microblog\blogapp\static\assets\chat" />
+      <recent name="C:\Users\Public\PycharmProjects\microblog\blogapp\static\assets\portrait" />
+      <recent name="C:\Users\Public\PycharmProjects\microblog\blogapp\static\assets\resources_item" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -181,7 +220,8 @@
       <workItem from="1575889113420" duration="16771000" />
       <workItem from="1575911737652" duration="12153000" />
       <workItem from="1575943045789" duration="9759000" />
-      <workItem from="1575963216095" duration="2926000" />
+      <workItem from="1575963216095" duration="2928000" />
+      <workItem from="1576036901345" duration="19441000" />
     </task>
     <servers />
   </component>
@@ -202,6 +242,6 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/microblog$microblog.coverage" NAME="microblog Coverage Results" MODIFIED="1575963228240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/microblog$microblog.coverage" NAME="microblog Coverage Results" MODIFIED="1576112797636" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

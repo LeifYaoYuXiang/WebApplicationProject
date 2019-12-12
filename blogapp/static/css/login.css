@@ -1,17 +1,13 @@
-/*#login_canvas{*/
-/*    position: absolute;*/
-/*    width: 100%;*/
-/*    height: 100%;*/
-/*    z-index: -1;*/
-/*    display: block;*/
-/*}*/
-
 #login_div {
     position: absolute;
     right: 10%;
     top: 10%;
 }
-
+/*
+I do the following CSS(input input:focus) from:https://blog.csdn.net/weixin_41728561/article/details/80984014
+I make some modifications according to this context
+I promise I can answer questions if you ask some related questions
+*/
 input{
     border: 1px solid #ccc;
     padding: 7px 0px;
@@ -30,7 +26,10 @@ input:focus{
     -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6);
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
 }
-
+/*I got the idea from: https://www.jianshu.com/p/c793fc0a5413
+After inspect the code from the website, I write the following CSS
+I make some modifications according to this context
+I promise I can answer questions if you ask some related questions*/
 #submit{
     font-size: 15px;
     height: 40px;

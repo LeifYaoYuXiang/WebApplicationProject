@@ -1,3 +1,4 @@
+
 #username,#password,#password_ensure,#email{
     border: 1px solid #ccc;
     padding: 7px 0px;
@@ -9,8 +10,6 @@
     -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
 }
-
-
 #username:focus,#password:focus,#password_ensure:focus,#email:focus{
     border-color: #66afe9;
     outline: 0;

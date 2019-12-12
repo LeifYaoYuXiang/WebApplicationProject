@@ -1,8 +1,7 @@
 #encoding:utf-8
 from datetime import datetime
 from blogapp import db
-
-
+# the following code is referenced from Week 11
 class Blog(db.Model):
     __tablename__ = 'blog'
     id = db.Column(db.Integer,primary_key=True)

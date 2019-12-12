@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ url_for('static',filename='css/horizontalDirection.css') }}">
 </head>
 <body>
+    <script src="{{ url_for('static',filename='js/jquery-3.4.1.js') }}"></script>
     <canvas id="background_canvas">
     </canvas>
     <div style="height: 100%;width: 100%;z-index: 9999">
@@ -39,6 +40,14 @@
                     {% endblock %}
                 </a>
             </div>
+            {% if username %}
+                <div id="horizon_display_list_login" class="horizon_display_list_item">
+                    <a href="{{ url_for("logout") }}">
+                        <img src="{{ url_for("static",filename="assets/logout.png") }}" class="display_list_icon">
+                        logout
+                    </a>
+                </div>
+            {% endif %}
         </div>
         <div style="position: absolute;width: 80%;left: 10%;right: 10%">
            {% block mainContent%}
@@ -47,5 +56,6 @@
         </div>
     </div>
     <script src="{{ url_for('static',filename='js/background.js') }}"></script>
+
 </body>
 </html>

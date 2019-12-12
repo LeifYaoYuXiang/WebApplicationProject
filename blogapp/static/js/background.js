@@ -1,3 +1,8 @@
+/*
+* All JS code here is referenced from: https://blog.csdn.net/z_zhy/article/details/82711151
+*I make some modifications according to this context
+*I promise I can answer questions if you ask some related questions
+* */
 let canvas=document.getElementById("background_canvas");
 let ctx=canvas.getContext('2d');
 resize();

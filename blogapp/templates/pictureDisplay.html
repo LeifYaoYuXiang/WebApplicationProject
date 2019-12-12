@@ -1,6 +1,10 @@
 <link rel="stylesheet" href="{{ url_for('static',filename='css/pictureDisplay.css') }}">
 {% extends "base.html" %}
-
+{#
+here display_item(image_src,id) is referenced from http://www.jq22.com/jquery-info22304
+I make some modifications according to this context
+I promise I can answer questions if you ask some related questions
+#}
 {% macro display_item(image_src,id)%}
     <input type="radio" name="slide_switch" id={{id}} />
     <label for={{id}}>

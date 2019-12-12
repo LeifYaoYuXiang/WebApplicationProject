@@ -1,20 +1,32 @@
 <link rel="stylesheet" href="{{ url_for('static',filename="css/contact.css") }}">
 <link rel="stylesheet" href="{{ url_for('static',filename='css/chat.css') }}">
 
-
+{#
+the following code new_iten() is referenced from http://www.jq22.com/jquery-info16202
+I make some modifications according to this context
+I promise I can answer questions if you ask some related questions
+#}
 {% macro new_item(type,news) %}
     {% if type == "ASK" %}
         <li>
             <div class="nesHead"><img src="{{ url_for('static',filename='assets/chat/user.png') }}"/></div>
-            <div class="news"><img class="jiao" src="{{url_for('static',filename='assets/chat/talk.jpg')}}">{{news}}</div>
+            <div class="news"><img class="jiao" src="{{ url_for('static',filename='assets/chat/talk.jpg') }}">{{ news }}
+            </div>
         </li>
     {% else %}
         <li>
             <div class="answerHead"><img src="{{ url_for('static',filename='assets/chat/administrator.png') }}"/></div>
-            <div class="answers"><img class="jiao" src="{{url_for('static',filename='assets/chat/answer.jpg')}}">{{news}}</div>
+            <div class="answers"><img class="jiao"
+                                      src="{{ url_for('static',filename='assets/chat/answer.jpg') }}">{{ news }}</div>
         </li>
     {% endif %}
 {% endmacro %}
+
+{#
+the following code new_iten() is referenced from http://www.jq22.com/jquery-info16202
+I make some modifications according to this context
+I promise I can answer questions if you ask some related questions
+#}
 {% macro chat(name) %}
     <div class="qqBox">
         <div class="context">
@@ -31,6 +43,13 @@
                             {{ new_item('ASK',last_post.information) }}
                             {{ new_item('ANSWER',"Thanks for your suggestion") }}
                         {% endif %}
+                        {% for msg in get_flashed_messages() %}
+                            {% if loop.last %}
+                                {% if msg=='LOGOUT' %}
+                                    {{ new_item('ANSWER',"Please log in and then commit your suggestions") }}
+                                 {% endif %}
+                            {% endif %}
+                        {% endfor %}
                     </ul>
                 </div>
                 <div class="inputBox" style="background: #ffffff">
@@ -89,12 +108,14 @@
                 <tr>
                     <td><img id="image_github" class="aside_icon"
                              src="{{ url_for('static',filename='assets/github.png') }}"></td>
-                    <td>LeifYaoYuXiang</td>
+                    <td><a href="https://github.com/LeifYaoYuXiang">LeifYaoYuXiang</a></td>
                 </tr>
-                 <tr>
+                <tr>
                     <td><img id="image_github" class="aside_icon"
                              src="{{ url_for('static',filename='assets/map.png') }}"></td>
-                     <td><a href="https://map.baidu.com/poi/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6/@12967536.090953758,4822280.601647398,13.63z?uid=8fd50150a1dc2bb63c9a5ed4&ugc_type=3&ugc_ver=1&device_ratio=2&compat=1&querytype=detailConInfo&da_src=shareurl">Beijing University of Technology</a></td>
+                    <td>
+                        <a href="https://map.baidu.com/poi/%E5%8C%97%E4%BA%AC%E5%B7%A5%E4%B8%9A%E5%A4%A7%E5%AD%A6/@12967536.090953758,4822280.601647398,13.63z?uid=8fd50150a1dc2bb63c9a5ed4&ugc_type=3&ugc_ver=1&device_ratio=2&compat=1&querytype=detailConInfo&da_src=shareurl">Beijing
+                            University of Technology</a></td>
                 </tr>
             </table>
 

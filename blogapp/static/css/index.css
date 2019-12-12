@@ -4,7 +4,7 @@
     left: 5%;
     height: 90%;
 }
-
+/*I learn 'box-shadow' from https://blog.csdn.net/qq_44607694/article/details/89605857*/
 .blog_item{
     padding: 10px;
     margin: 20px;
@@ -120,6 +120,11 @@
     font-family: "Lucida Calligraphy";
 }
 
+/*
+I do the following CSS(#search #search:focus) from:https://blog.csdn.net/weixin_41728561/article/details/80984014
+I make some modifications according to this context
+I promise I can answer questions if you ask some related questions
+*/
 #search{
     border: 1px solid #ccc;
     padding: 7px 0px;
@@ -139,6 +144,10 @@
     box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(102,175,233,.6)
 }
 
+/*I got the idea from: https://www.jianshu.com/p/c793fc0a5413
+After inspect the code from the website, I write the following CSS
+I make some modifications according to this context
+I promise I can answer questions if you ask some related questions*/
 #submitSearch{
     border: 1px solid #ccc;
     padding: 7px 5px;

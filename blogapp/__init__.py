@@ -1,3 +1,4 @@
+# I do the following code referenced from lecture 9 10 11 12 13
 # 这里是从Flask框架中引入Flask对象
 from flask import Flask
 # 从blogapp.config中引入Config对象

@@ -10,16 +10,21 @@ from blogapp.form import LoginFrom, SignUpForm,CommentForm,SearchBlog,Suggestion
 from blogapp.models import User, Blog, Comment, Resource,Suggesstion
 import os
 import random
+import time
 
 
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/index', methods=['GET', 'POST'])
 def index():
     form = SearchBlog()
+    # I learn how to manipulate the session from lecture 12
     username = session.get("USERNAME")
     path = os.path.split(os.path.realpath(__file__))[0]+os.sep+'templates'+os.sep+'blogs'
     files = os.listdir(path)
     all_blog_information = []
+
+    # I learn the the following "SQL count()" the website:
+    # https://blog.csdn.net/hanyuyang19940104/article/details/80519003
     original = Blog.query.filter_by().count()
     fans = User.query.filter_by().count()
     comments_total=Comment.query.filter_by().count()
@@ -31,7 +36,10 @@ def index():
     android_blog = Blog.query.filter_by(tag='Android').count()
     python_blog = Blog.query.filter_by(tag='Python').count()
     for file in files:
+        # I learn how to get the  files in one directory from:
+        # https://blog.csdn.net/zhuzuwei/article/details/79925562
         name = os.path.splitext(file)[0]
+        # I learn how to manipulate the database from lecture 13
         blog =Blog.query.filter_by(title=name).first()
         if blog:
             comments = Comment.query.filter_by(blog_id=blog.id).count()
@@ -61,9 +69,10 @@ def index():
 @app.route('/login', methods=['GET','POST'])
 def login():
     form = LoginFrom()
-    username=session.get('USERNAME')
+    # I learn how to manipulate the session from lecture 12
+    username = session.get('USERNAME')
     if username:
-        flash('You have log in one account,may you want to log in another one')
+        flash('You have log in one account,may you want to log in another one?')
     else:
         flash('You have not log in! Please log in and then you are able to make comments')
     if form.validate_on_submit():
@@ -83,8 +92,10 @@ def login():
 @app.route('/signup',methods=['GET','POST'])
 def signup():
     form = SignUpForm()
+    # I learn how to manipulate the form from lecture 10
     if form.validate_on_submit():
         password_hash = generate_password_hash(form.password.data)
+        # I learn how to add data to database from lecture 11
         user = User(username=form.username.data, password_hash=password_hash, email=form.email.data)
         db.session.add(user)
         db.session.commit()
@@ -97,37 +108,49 @@ def signup():
 @app.route('/contact',methods=["GET", "POST"])
 def contact():
     form=SuggestionPost()
+    # I learn how to manipulate the session from lecture 12
     log_in_username = session.get("USERNAME")
     if log_in_username:
+        # I learn how to manipulate the form from lecture 10
         if form.validate_on_submit():
             user_in_db = User.query.filter(User.username == session.get('USERNAME')).first()
             suggestion = Suggesstion(suggestion=form.post.data,user_id=user_in_db.id)
+            # I learn how to add data to database from lecture 11
             db.session.add(suggestion)
             db.session.commit()
             form.post.data = ""
             last_post={'information':suggestion.suggestion}
             return render_template('contact.html',form=form,last_post=last_post)
     else:
-        flash("You have not log in yet!")
+        if form.validate_on_submit():
+            flash("LOGOUT")
     return render_template('contact.html',form=form,username=log_in_username)
 
 
 @app.route('/album', methods=["GET", "POST"])
 def album():
+    # I learn how to manipulate the session from lecture 12
     log_in_username = session.get("USERNAME")
     return render_template('album.html',username=log_in_username)
 
 
 @app.route('/resources',methods=["GET", "POST"])
 def resources():
+    # I learn how to manipulate the session from lecture 12
     log_in_username = session.get("USERNAME")
+    # I learn how to get the  files in one directory from:
+    # https://blog.csdn.net/zhuzuwei/article/details/79925562
     path = os.path.split(os.path.realpath(__file__))[0] + os.sep + 'static' + os.sep + 'download'
     files = os.listdir(path)
     resources_in_db = []
     for file in files:
+        # I learn how to get the name of one file from
+        # https://blog.csdn.net/zhuzuwei/article/details/79925562
         name = os.path.splitext(file)[0]
         resource = Resource.query.filter_by(name=name).first()
         if resource:
+            # I learn how to calculate the size of one file from:
+            # https://blog.csdn.net/wss794/article/details/86504729
             f_pos = os.path.getsize(path+os.sep+file)
             fsize = round(f_pos / float(1024), 2)
             type = os.path.splitext(file)[1]
@@ -156,6 +179,8 @@ def resources():
 
 @app.route('/resources_search/<keyword>',methods=["GET", "POST"])
 def resources_search(keyword):
+    # I learn how to transmit the parameters by URL from
+    # <<Python Flask 开发入门与项目实战>> P29
     log_in_username = session.get("USERNAME")
     path = os.path.split(os.path.realpath(__file__))[0] + os.sep + 'static' + os.sep + 'download'
     files = os.listdir(path)
@@ -163,6 +188,8 @@ def resources_search(keyword):
     if keyword in ['JAVA','C','OPENGL','FLASK','ANDROID','PYTHON']:
         for file in files:
             name = os.path.splitext(file)[0]
+            # I learn how to 'SELECT FROM WHERE (AND)' from
+            # https://blog.csdn.net/hanyuyang19940104/article/details/80519003
             resource = Resource.query.filter_by(name=name, tag=keyword).first()
             if resource:
                 f_pos = os.path.getsize(path + os.sep + file)
@@ -218,14 +245,10 @@ def resources_search(keyword):
     return render_template('resources_search.html', keyword=keyword,resources_in_db=resources_in_db,username=log_in_username)
 
 
-@app.route('/game',methods=['GET','POST'])
-def game():
-    return render_template('game.html')
-
-
 @app.route('/pictureDisplay/<type>', methods=['GET','POST'])
 def pictureDisplay(type):
-    username=session.get('USERNAME')
+    # I learn how to manipulate the session from lecture 12
+    username = session.get('USERNAME')
     print(type)
     path = '';
     temp_pics = [];
@@ -233,6 +256,7 @@ def pictureDisplay(type):
     if type == "ACG":
         path = os.path.split(os.path.realpath(__file__))[0]+os.sep+'static'+os.sep+'assets'+os.sep+'album_acg'
         temp_pics = os.listdir(path)
+        #
         for pic in temp_pics:
             pic = 'assets/album_acg/'+pic
             print(pic)
@@ -284,6 +308,8 @@ def pictureDisplay(type):
 @app.route('/download/<string:filename>', methods=['GET'])
 def download(filename):
     if request.method == "GET":
+        # I learn how to manipulate the file directory from:
+        #
         path = os.path.split(os.path.realpath(__file__))[0] + os.sep+'static'+os.sep+'download'+os.sep+filename
         print(path)
         if os.path.isfile(path):
@@ -390,3 +416,9 @@ def blog_search(keyword):
                            opengl_blog=opengl_blog,
                            android_blog=android_blog,
                            python_blog=python_blog)
+
+
+@app.route('/logout',methods=['GET'])
+def logout():
+    session.clear()
+    return redirect('index')

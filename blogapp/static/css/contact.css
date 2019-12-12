@@ -42,15 +42,6 @@ a:hover{
     color: black;
 }
 
-a:link{
-    color: black;
-}
-
-a:visited{
-    color: black;
-}
-
-
 #name_signature{
     margin-top: 10px;
     margin-bottom: 10px;
@@ -94,7 +85,10 @@ a:visited{
     outline: none;
     resize: none;
 }
-
+/*I got the idea from: https://www.jianshu.com/p/c793fc0a5413
+After inspect the code from the website, I write the following CSS
+I make some modifications according to this context
+I promise I can answer questions if you ask some related questions*/
 #submitSuggestion {
     width: 68px;
     height: 25px;

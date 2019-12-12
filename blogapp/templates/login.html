@@ -5,9 +5,16 @@
 
     </div>
     <div id="login_div">
-        <h1>Log In Your Account</h1>
+    {# the form is referenced from lecture slide WEEK 10 #}
+        {% if username %}
+            <h1>Welcome {{ username }}!</h1>
+        {% else %}
+            <h1>Log In Your Account</h1>
+        {% endif %}
         {% for msg in get_flashed_messages() %}
-            <p>{{ msg }}</p>
+            {% if loop.last %}
+                 <p>{{ msg }}</p>
+            {% endif %}
         {% endfor %}
         {% block content %}
             <form action="" method="post" novalidate>
@@ -18,11 +25,16 @@
 
                 <P>{{ form.submit }}</P>
                 <p>
-                    <a href="{{ url_for("signup") }}">I do not have one account yet, I want to register one</a>
+                    {% if username %}
+                        <a href="{{ url_for("signup") }}">You have one account, may you need a new one?</a>
+                    {% else %}
+                        <a href="{{ url_for("signup") }}">I do not have one account yet, I want to register one</a>
+                    {% endif %}
                 </p>
             </form>
         {% endblock %}
     </div>
+    <script src="{{ url_for('static',filename='js/login.js')}}"></script>
 {% endblock %}
 
 {% block login %}
@@ -32,3 +44,4 @@
         Login
     {% endif %}
 {% endblock %}
+
