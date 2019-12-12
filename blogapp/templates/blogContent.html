@@ -16,7 +16,9 @@
 
 {% extends 'index.html' %}
 {% block blog_content %}
-    {% include name %}
+    <div style="background-color: #aaaaaa">
+        {% include name %}
+    </div>
     <hr/>
     <ul>
         {% for comment in comments_in_db %}
@@ -31,11 +33,20 @@
         {% for error in form.comment.errors %}
             <span style="color: red;">[{{ error }}]</span>
         {% endfor %}
+
         {% for msg in get_flashed_messages() %}
-            <p>{{ msg }}</p>
+            {% if loop.last %}
+                <p>{{ msg }}</p>
+            {% endif %}
         {% endfor %}
+
+        {% if username %}
+            <div id="input_feedback"></div>
+        {% else %}
+        {% endif %}
         <P>{{ form.submit }}</P>
     </form>
+    <script src="{{ url_for('static',filename='js/blogContent.js') }}"></script>
 {% endblock %}
 
 {% block ranking_list %}

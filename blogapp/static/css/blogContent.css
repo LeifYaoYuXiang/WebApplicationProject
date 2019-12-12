@@ -1,21 +1,23 @@
-textarea{
-    border:0;
-    border-radius:5px;
-    background-color:rgba(241,241,241,.98);
+textarea {
+    border: 0;
+    border-radius: 5px;
+    background-color: rgba(241, 241, 241, .98);
     width: 800px;
     height: 100px;
     padding: 10px;
     resize: none;
 }
+
 /*I got the idea from: https://www.jianshu.com/p/c793fc0a5413
 After inspect the code from the website, I write the following CSS
 I make some modifications according to this context
 I promise I can answer questions if you ask some related questions*/
-#submit{
+#submit {
     color: #fff;
-    text-shadow: 0 -1px 0 rgba(0,0,0,0.12);
-    box-shadow: 0 2px 0 rgba(0,0,0,0.045);
-    border-radius: 200px;!important;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.045);
+    border-radius: 200px;
+!important;
     background-color: #1B9AF7;
     border-color: #1B9AF7;
     font-weight: 300;
@@ -25,17 +27,18 @@ I promise I can answer questions if you ask some related questions*/
     text-align: center;
     line-height: 40px;
     height: 40px;
-    padding: 0 40px;!important;
+    padding: 0 40px;
+!important;
     margin: 0;
 }
 
-.portrait_icon{
+.portrait_icon {
     width: 60px;
     height: 60px;
     border-radius: 20px;
 }
 
-.comment_username{
+.comment_username {
     margin-left: 0;
     margin-right: 0;
     font-size: 14px;
@@ -47,8 +50,16 @@ I promise I can answer questions if you ask some related questions*/
     text-align: left;
 }
 
-.comment_information{
+.comment_information {
     font-size: 13px;
     text-align: left;
+}
+
+
+#input_feedback {
+    text-align: right;
+    font-size: small;
+    color: gray;
+    font-weight: bold;
 }
 
