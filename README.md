@@ -1,6 +1,7 @@
 # WebApplicationProject
 ## Before You Grade:
 - **Please don't delete the database**: one dangerous action, since the file information is saved in the database, if you delete them, "resources download function" will be invalid
+- Since  the upload limitations, I cannot upload the whole project, so I ignore the **venv directory**
 ## Functionality Provided
 ### General Overview
 In this project, I design my own web blog. It enables visitors to see my published blogs, albums and resources. People can make comments on my blogs, make suggestions, and download resources. In addition, people can make suggestions.
