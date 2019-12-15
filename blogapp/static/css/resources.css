@@ -77,6 +77,11 @@ I promise I can answer questions if you ask some related questions*/
 
 .cation-middle {
     line-height: 48px;
+    /*
+    line-height 属性设置行间的距离（行高）
+    line-height 与 font-size 的计算值之差（在 CSS 中成为“行间距”）分为两半，
+    分别加到一个文本行内容的顶部和底部。可以包含这些内容的最小框就是行框。
+    */
     background: #fff;
     padding: 10px 20px 10px 30px;
     font-size: 14px;
@@ -84,6 +89,12 @@ I promise I can answer questions if you ask some related questions*/
 
 .cation-list {
     overflow: hidden;
+    /*overflow 属性规定当内容溢出元素框时发生的事情
+    可选值如下：
+        visible：默认值。内容不会被修剪，会呈现在元素框之外
+        hidden：内容会被修剪，并且其余内容是不可见的
+        scroll：内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容
+        auto ：如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容*/
 }
 
 .cation-list dt {
@@ -96,12 +107,24 @@ I promise I can answer questions if you ask some related questions*/
 }
 
 :before, :after {
+    /*
+     box-sizing 是用于告诉浏览器如何计算一个元素是总宽度和总高度
+        标准盒模型 box-sizing: content-box
+            width = content width;
+            height = content height
+        IE盒模型 box-sizing: border-box
+            width = border + padding + content width
+            height = border + padding + content heigth
+     https://www.jianshu.com/p/9c7487f4e89a
+    */
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+
 }
 
 .cation-list dt:after {
+    /*实现了 > 的效果*/
     content: "";
     position: absolute;
     right: 12px;
@@ -114,6 +137,7 @@ I promise I can answer questions if you ask some related questions*/
     -moz-transform: rotate(-45deg);
     transform: rotate(-45deg);
 }
+
 
 .cation-list dd {
     border-bottom: 1px dotted #e0e0e0;

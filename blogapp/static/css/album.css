@@ -3,17 +3,30 @@ Following all of CSS are referenced from： http://www.jq22.com/jquery-info6704
 I make some modifications according to this context
 I promise I can answer questions if you ask some related questions
 */
+
+/*
+.polaroids:找到类名为polaroids的元素
+*/
 .polaroids {
     width: 970px;
     margin: 0 0 18px 10px;
 }
+
+/*
+.polaroids li:找到类名为polaroids中的li元素：
+*/
 .polaroids li {
     display: inline;
+    /*将元素显示为内联行内元素*/
+
 }
 .polaroids a {
     background: #fff;
     display: inline;
     float: left;
+    /*设置元素的浮动为左或者右浮动，
+    当设置元素浮动时，相邻元素会根据自身大小，排满一行，如果父容器宽度不够则会换行。
+    当我们设置了元素的浮动时，这个元素就脱离了文档流，相邻元素会呈环绕装排列。*/
     margin: 0 0 27px 30px;
     width: auto;
     padding: 10px 10px 15px;
@@ -22,6 +35,13 @@ I promise I can answer questions if you ask some related questions
     text-decoration: none;
     color: #333;
     font-size: 18px;
+    /*
+     -webkit-、-moz-、-o-：浏览器版本号
+     box-shadow: 0 3px 6px rgba(0, 0, 0, .25)：
+        第一个参数是水平阴影的位置；
+        第二个参数是垂直阴影的位置；
+        第三个参数是模糊距离；
+    */
     -webkit-box-shadow: 0 3px 6px rgba(0, 0, 0, .25);
     -moz-box-shadow: 0 3px 6px rgba(0, 0, 0, .25);
     -o-box-shadow: 0 3px 6px rgba(0, 0, 0, .25);
@@ -32,9 +52,18 @@ I promise I can answer questions if you ask some related questions
     width: 190px;
     margin-bottom: 12px;
 }
+
+/*伪元素将会在内容元素的前后插入额外的元素，
+因此当我们添加它们时，使用以下的标记方式，他们在技术上是平等的。*/
 .polaroids a:after {
+    /*CSS函数attr()是用来获取被选中元素的属性值，并且在样式文件中使用。
+    它也可以用在伪类元素里，在伪类元素里使用，它得到的是伪元素的原始元素的值*/
     content: attr(title);
 }
+
+/*
+:nth-child(n) 选择器匹配属于其父元素的第 N 个子元素，
+*/
 .polaroids li:nth-child(even) a {
     -webkit-transform: rotate(2deg);
     -moz-transform: rotate(2deg);

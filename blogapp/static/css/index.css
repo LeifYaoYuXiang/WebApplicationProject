@@ -131,9 +131,22 @@ I promise I can answer questions if you ask some related questions
     border-radius: 3px;
     padding-left: 5px;
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    /*可选:将外部阴影 (outset) 改为内部阴影*/
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
     -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
     -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    /*
+    transition-property:指定CSS属性的name，transition效果
+    transition-duration:transition效果需要指定多少秒或毫秒才能完成
+    transition-timing-function:指定transition效果的转速曲线
+    transition-delay:何时将开始切换效果
+    transition-timing-function:
+        linear:规定以相同速度开始至结束的过渡效果（等于 cubic-bezier(0,0,1,1)）。
+        ease:规定慢速开始，然后变快，然后慢速结束的过渡效果（cubic-bezier(0.25,0.1,0.25,1)）。
+        ease-in:规定以慢速开始的过渡效果（等于 cubic-bezier(0.42,0,1,1)）。
+        ease-out:规定以慢速结束的过渡效果（等于 cubic-bezier(0,0,0.58,1)）。
+        ease-in-out:规定以慢速开始和结束的过渡效果（等于 cubic-bezier(0.42,0,0.58,1)）。
+    */
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s
 }
 

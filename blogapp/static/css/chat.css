@@ -12,11 +12,20 @@ I promise I can answer questions if you ask some related questions*/
     left: 0;
     right: 0;
     margin: auto;
+    /*
+    在平常的web横排布局中，会经常用到float或display:inline-block，
+    但是在多种不同宽度的移动设备的自适应布局中用的话，还得设置百分比宽度和考虑清除浮动。
+    而Flexible Box Model可以自动计算宽度和自适应，更加方便
+    */
     display: -webkit-box;
+    /*
+    box-orient：在父元素上设置,子元素排列 vertical (垂直) or horizontal（水平）
+    */
     -webkit-box-orient: vertical;
 }
 
 .context {
+    /*box-flex:在子元素上设置,兄弟元素之间比例，仅作一个系数*/
     -webkit-box-flex: 1;
     display: -webkit-box;
     -webkit-box-orient: horizontal;
@@ -46,6 +55,8 @@ I promise I can answer questions if you ask some related questions*/
 
 .RightCont {
     -webkit-box-flex: 1;
+    /*overflow-y:如果它溢出了元素的内容区-剪辑div元素的顶部/底部边缘内容
+        scroll:裁剪内容,提供滚动机制*/
     overflow-y: scroll;
 }
 

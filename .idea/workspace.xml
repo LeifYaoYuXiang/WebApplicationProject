@@ -2,12 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b1ac9675-2a21-4cc8-a909-45291d70de53" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/blogapp/static/js/blogContent.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogapp/blogdb.db" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/blogdb.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/static/css/blogContent.css" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/static/css/blogContent.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/static/css/album.css" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/static/css/album.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/static/css/chat.css" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/static/css/chat.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/static/css/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/static/css/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/static/css/pictureDisplay.css" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/static/css/pictureDisplay.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/static/css/resources.css" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/static/css/resources.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/blogapp/static/js/background.js" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/static/js/background.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/blogapp/templates/blogContent.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/templates/blogContent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/static/js/blogContent.js" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/static/js/blogContent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/templates/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/templates/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/templates/pictureDisplay.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/templates/pictureDisplay.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/blogapp/templates/resources.html" beforeDir="false" afterPath="$PROJECT_DIR$/blogapp/templates/resources.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -183,6 +189,9 @@
       <workItem from="1576117194303" duration="782000" />
       <workItem from="1576119568943" duration="1695000" />
       <workItem from="1576130323922" duration="5085000" />
+      <workItem from="1576138844565" duration="150000" />
+      <workItem from="1576225397903" duration="623000" />
+      <workItem from="1576323034824" duration="17520000" />
     </task>
     <servers />
   </component>
@@ -203,6 +212,6 @@
     </option>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/microblog$microblog.coverage" NAME="microblog Coverage Results" MODIFIED="1576136184536" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/microblog$microblog.coverage" NAME="microblog Coverage Results" MODIFIED="1576374525114" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

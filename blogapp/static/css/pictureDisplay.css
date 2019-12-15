@@ -11,30 +11,46 @@ I promise I can answer questions if you ask some related questions*/
 .slider>img{
 	position: absolute;
 	left: 0; top: 0;
+	/*这里是说明，当CSS样式有所改变的时候，需要多少秒完成改变*/
 	transition: all 0.5s;
 }
+/*根据属性值判断*/
 .slider input[name='slide_switch'] {
-	display: none;
+	display: none;/*此元素不会被显示，也即不显示input的那个单选框*/
 }
 .slider label {
 	margin: 18px 0 0 18px;
 	border: 3px solid #999;
 	float: left;
-	cursor: pointer;
+	cursor: pointer; /*光标呈现为指示链接的指针（一只手）*/
 	transition: all 0.5s;
-	opacity: 0.6;
+	opacity: 0.6;/*设置透明度*/
 }
 .slider label img{
 	display: block;
 }
+/*
+:checked是一种CSS伪类选择器表示任何处于选中状态的radio或者checkbox
++ 选择器：选择之后紧邻的第一个兄弟元素
+*/
 .slider input[name='slide_switch']:checked+label {
 	border-color: #666;
 	opacity: 1;
 }
+/*
+~：兄弟元素选择器，选中后面所有的兄弟元素
+*/
 .slider input[name='slide_switch'] ~ img {
 	opacity: 0;
 	transform: scale(1.1);
 }
+/*
+如何理解这个选择器是重中之重：
+- input[name='slide_switch']:checked
+- +label
+- +img
+后面两个一层一层往下找
+*/
 .slider input[name='slide_switch']:checked+label+img {
 	opacity: 1;
 	transform: scale(1);
